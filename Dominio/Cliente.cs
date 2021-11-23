@@ -1,6 +1,5 @@
 using System;
 using System.Runtime.Serialization;
-using System.Transactions;
 
 namespace TPFinal
 
@@ -48,14 +47,14 @@ ademas del apellido, nombre y dni del viajante tiene cuit y razón social de la 
         Tucumán
     }
 
-    public abstract class Cliente
+    public class Cliente
     {
         private string _nacionalidad;
         private string _provincia;
         private string _direccion;
         private string _telefono;
 
-        public Cliente(){}
+        public Cliente() { }
 
         public Cliente(string nacionalidad, string provincia, string direccion, string telefono)
         {
@@ -101,87 +100,16 @@ ademas del apellido, nombre y dni del viajante tiene cuit y razón social de la 
             get => _telefono;
             set => _telefono = value;
         }
-        
-        public  void mostrarCliente()
+
+        public void mostrarCliente()
         {
-            Console.WriteLine("Cliente particular: \n" 
-                              + "Nacionalidad: " + this._nacionalidad + "\n" 
+            Console.WriteLine("Cliente particular: \n"
+                              + "Nacionalidad: " + this._nacionalidad + "\n"
                               + "Provincia: " + this._provincia + "\n"
                               + "Direccion: " + this._direccion + "\n"
                               + "Telefono: " + this._telefono + "\n");
         }
     }
 
-    public class Particular : Cliente
-    {
-        //dni se usará como id
-        private long dni;
-        private string apellido;
-        private string nombre;
-
-        public Particular(){}
-
-        public Particular(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre) 
-            : base(nacionalidad, provincia, direccion, telefono)
-        {
-            this.dni = dni;
-            this.apellido = apellido;
-            this.nombre = nombre;
-        }
-
-        public long Dni
-        {
-            get => dni;
-            set => dni = value;
-        }
-
-        public string Apellido
-        {
-            get => apellido;
-            set => apellido = value;
-        }
-
-        public string Nombre
-        {
-            get => nombre;
-            set => nombre = value;
-        }
-
-        public void mostrarCliente(Particular p)
-        {
-            base.mostrarCliente();
-            Console.WriteLine(p.dni);
-            //TODO: seguir generando codigo para mostrar info
-        }
-    }
-
-    public class Corporativo : Particular
-    {
-        private string _razonSocial;
-        private long _cuit;
-
-        public Corporativo(string razonSocial, long cuit)
-        {
-            _razonSocial = razonSocial;
-            _cuit = cuit;
-        }
-
-        public Corporativo(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre, string razonSocial, long cuit) : base(nacionalidad, provincia, direccion, telefono, dni, apellido, nombre)
-        {
-            _razonSocial = razonSocial;
-            _cuit = cuit;
-        }
-
-        public string RazonSocial
-        {
-            get => _razonSocial;
-            set => _razonSocial = value;
-        }
-
-        public long Cuit
-        {
-            get => _cuit;
-            set => _cuit = value;
-        }
-    }
+   
 }
