@@ -8,19 +8,16 @@ namespace Dominio
 {
     public class Particular : Cliente
     {
-        //dni se usará como id
         private long dni;
         private string apellido;
         private string nombre;
 
-        public Particular() { }
-
-        public Particular(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre)
-            : base(nacionalidad, provincia, direccion, telefono)
-        {
-            this.dni = dni;
-            this.apellido = apellido;
-            this.nombre = nombre;
+        public Particular():base() {
+            IngresarDni();
+            Console.WriteLine("Ingresa apellido: ");
+            this.apellido = Console.ReadLine();
+            Console.WriteLine("Ingresa nombre: ");
+            this.nombre = Console.ReadLine();
         }
 
         public long Dni
@@ -41,11 +38,25 @@ namespace Dominio
             set => nombre = value;
         }
 
-        public void mostrarCliente(Particular p)
+        public override void MostrarCliente()
         {
-            base.mostrarCliente();
-            Console.WriteLine(p.dni);
-            //TODO: seguir generando codigo para mostrar info
+            base.MostrarCliente();
+            Console.WriteLine($"D.N.I.: {this.dni}");
+            Console.WriteLine($"Apellido: {this.apellido}");
+            Console.WriteLine($"Nombre: {this.nombre}");
+        }
+
+        private void IngresarDni()
+        {
+            Console.Write("Ingresar D.N.I.: ");
+            var dniString = Console.ReadLine();
+            var esInt = int.TryParse(dniString, out int dni);
+            while(!esInt || dniString.Length != 8)
+            {
+                dniString = Console.ReadLine();
+                esInt = int.TryParse(dniString, out dni);
+            }
+            this.dni=dni;
         }
     }
 }
