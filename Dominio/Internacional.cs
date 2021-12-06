@@ -26,7 +26,7 @@ namespace Dominio
         {
             return PrecioBase + impuesto;
         }
-        public bool cargarPago(int cantidadDeCuotas, double valorPorCuota)
+        protected override bool cargarPago(int cantidadDeCuotas, double valorPorCuota)
         {
             throw new NotImplementedException();
         }

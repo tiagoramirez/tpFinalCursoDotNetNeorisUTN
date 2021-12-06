@@ -17,7 +17,7 @@ namespace Dominio
             _cuit = cuit;
         }
 
-        public Corporativo(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre, string razonSocial, long cuit) : base(nacionalidad, provincia, direccion, telefono, dni, apellido, nombre)
+        public Corporativo(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre, string razonSocial, long cuit) : base()
         {
             _razonSocial = razonSocial;
             _cuit = cuit;
