@@ -1,52 +1,11 @@
-using System;
-using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace TPFinal
-
-/*Cliente: Debe contener mínimamente nacionalidad,provincia, dirección y teléfono de contacto. 
-    Existen clientes particulares que tendrán dni, apellido y nombre, y corporativo que 
-ademas del apellido, nombre y dni del viajante tiene cuit y razón social de la empresa*/
+namespace Dominio
 {
-//Agregado comentario prueba
-    [Flags] public enum Provincias
-    {
-       
-        [EnumMember(Value = "Buenos Aires")]
-        BuenosAires,
-        Catamarca,
-        Chaco,
-        Chubut,
-        Córdoba,
-        Corrientes,
-        [EnumMember(Value = "Entre Ríos")]
-        EntreRios,
-        Formosa,
-        Jujuy,
-        [EnumMember(Value = "La Pampa")]
-        LaPampa,
-        [EnumMember(Value = "La Rioja")]
-        LaRioja,
-        Mendoza,
-        Misiones,
-        Neuquén,
-        [EnumMember(Value = "Río Negro")]
-        RíoNegro,
-        Salta,
-        [EnumMember(Value = "San Juan")]
-        SanJuan,
-        [EnumMember(Value = "San Luis")]
-        SanLuis,
-        [EnumMember(Value = "Santa Cruz")]
-        SantaCruz,
-        [EnumMember(Value = "Santa Fe")]
-        SantaFe,
-        [EnumMember(Value = "Santiago del Estero")]
-        SantiagoDelEstero,
-        [EnumMember(Value = "Tierra del Fuego Antártida e Islas del Atlántico Sur,")]
-        TierraDelFuego,
-        Tucumán
-    }
-
     public class Cliente
     {
         private string _nacionalidad;
@@ -78,14 +37,7 @@ ademas del apellido, nombre y dni del viajante tiene cuit y razón social de la 
             }
             set
             {
-                if (Enum.IsDefined(typeof(Provincias), value))
-                {
-                    _provincia = value;
-                }
-                else
-                {
-                    Console.WriteLine("Entrada invalida");
-                }
+                _provincia=value;
             }
         }
 
@@ -110,6 +62,4 @@ ademas del apellido, nombre y dni del viajante tiene cuit y razón social de la 
                               + "Telefono: " + this._telefono + "\n");
         }
     }
-
-   
 }

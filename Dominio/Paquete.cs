@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Paquete
+    public class Paquete
     {
         private string nombre;
         private double precioBase;
-        private Lugar [] listaLugares = new Lugar[10];
+        private Lugar[] listaLugares = new Lugar[10];
         private int cantidadDiasTotales;
         private DateTime fechaDeViaje;
         private bool vigente;

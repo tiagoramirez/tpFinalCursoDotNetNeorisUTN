@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Lugar
+    public class Lugar
     {
         private string nombre;
         private DateTime fechahoraLLegada;

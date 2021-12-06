@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace TPFinal
+namespace TP_Final
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -12,7 +13,7 @@ namespace TPFinal
             Cliente c = new Cliente();
             ConsoleKeyInfo continuar;
             string prov;
-            
+
             do
             {
                 Console.WriteLine("Ingrese Provincia: ");
@@ -23,14 +24,14 @@ namespace TPFinal
                 prov = (CultureInfo.InvariantCulture.TextInfo.ToTitleCase(prov));
                 Console.WriteLine(prov);
                 prov = Regex.Replace(prov, @"\s", "");
-                
+
                 Console.WriteLine(prov);
                 c.Provincia = prov;
-                
+
                 Console.WriteLine("Continuar? (s/n)");
                 continuar = Console.ReadKey(true);
-            }while (continuar.KeyChar!='n' && continuar.KeyChar!='N');
-           Console.WriteLine(c.Provincia);
+            } while (continuar.KeyChar != 'n' && continuar.KeyChar != 'N');
+            Console.WriteLine(c.Provincia);
         }
     }
 }
