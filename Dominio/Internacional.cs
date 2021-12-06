@@ -9,11 +9,11 @@ namespace Dominio
     public class Internacional : Paquete
     {
         private bool requiereVisa;
-        private double contisacionDolar;
-
-        public Internacional(bool requiereVisa, double contisacionDolar, string nombre, double precioBase,
-            Lugar[] listaLugares, int cantidadDiasTotales, DateTime fechaDeViaje, bool vigente, int cantidadDeCuotas, double valorPorCuota)
-         : base(nombre, precioBase, listaLugares, cantidadDiasTotales, fechaDeViaje, vigente, cantidadDeCuotas, valorPorCuota)
+        private double contisacionDolar;      
+        
+        public Internacional(bool requiereVisa, double contisacionDolar, string nombre, double precioBase, 
+            Lugar[] listaLugares, int cantidadDiasTotales, DateTime fechaDeViaje, bool vigente ) 
+         :base( nombre,  precioBase,  listaLugares,  cantidadDiasTotales,  fechaDeViaje,  vigente )
         {
             this.requiereVisa = requiereVisa;
             this.contisacionDolar = contisacionDolar;
@@ -25,6 +25,10 @@ namespace Dominio
         public double SetImpuestoFijo(double impuesto)
         {
             return PrecioBase + impuesto;
+        }
+        public bool cargarPago(int cantidadDeCuotas, double valorPorCuota)
+        {
+            throw new NotImplementedException();
         }
     }
 }

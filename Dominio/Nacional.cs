@@ -9,14 +9,19 @@ namespace Dominio
     public class Nacional : Paquete
     {
         public Nacional(bool requiereVisa, double contisacionDolar, string nombre, double precioBase,
-            Lugar[] listaLugares, int cantidadDiasTotales, DateTime fechaDeViaje, bool vigente, int cantidadDeCuotas, double valorPorCuota)
-         : base(nombre, precioBase, listaLugares, cantidadDiasTotales, fechaDeViaje, vigente, cantidadDeCuotas, valorPorCuota)
+            Lugar[] listaLugares, int cantidadDiasTotales, DateTime fechaDeViaje, bool vigente  )
+         : base(nombre, precioBase, listaLugares, cantidadDiasTotales, fechaDeViaje, vigente )
         {
 
         }
         public double SetImpuestoPorcentaje(double porcentaje)
         {
             return (PrecioBase * porcentaje) + PrecioBase;
+        }
+
+        protected override bool cargarPago(int cantidadDeCuotas, double valorPorCuota)
+        {
+            throw new NotImplementedException();
         }
     }
 }
