@@ -56,13 +56,13 @@ namespace Dominio
             Console.WriteLine("Telefono: " + this._telefono);
         }
 
-        protected void IngresarProvincia()
+        private void IngresarProvincia()
         {
             var opc=MostrarProvinciasEIngresarOpcion();
             SetProvincia(opc);
         }
 
-        protected int MostrarProvinciasEIngresarOpcion()
+        private int MostrarProvinciasEIngresarOpcion()
         {
             Console.WriteLine("1: Buenos Aires");
             Console.WriteLine("2: Capital Federal");
@@ -92,6 +92,8 @@ namespace Dominio
             var esInt = int.TryParse(Console.ReadLine(), out int opc);
             while (opc < 1 || opc > 24 || !esInt)
             {
+                Console.WriteLine("Opcion Incorrecta!");
+                Console.Write("Vuelve a ingresar una opcion: ");
                 esInt = int.TryParse(Console.ReadLine(), out opc);
             }
             Console.Clear();

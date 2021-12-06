@@ -8,7 +8,7 @@ namespace TP_Final
 {
     internal class Menus
     {
-        public static char MostrarMenuPrincipalEIngresarOpcion()
+        public static char MenuPrincipal()
         {
             Console.WriteLine("1: Crear nuevo cliente");
             Console.WriteLine("2: Listar facturas de un cliente y el total de sus ventas");
@@ -19,6 +19,20 @@ namespace TP_Final
 
             var opc = Console.ReadKey(true);
             while (opc.KeyChar < '1' || opc.KeyChar > '6')
+            {
+                opc = Console.ReadKey(true);
+            }
+            Console.Clear();
+            return opc.KeyChar;
+        }
+
+        public static char MenuCrearCliente()
+        {
+            Console.WriteLine("1: Cliente Particular");
+            Console.WriteLine("2: Cliente Corporativo");
+
+            var opc = Console.ReadKey(true);
+            while (opc.KeyChar < '1' || opc.KeyChar > '2')
             {
                 opc = Console.ReadKey(true);
             }

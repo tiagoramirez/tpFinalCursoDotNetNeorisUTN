@@ -11,16 +11,11 @@ namespace Dominio
         private string _razonSocial;
         private long _cuit;
 
-        public Corporativo(string razonSocial, long cuit)
+        public Corporativo():base()
         {
-            _razonSocial = razonSocial;
-            _cuit = cuit;
-        }
-
-        public Corporativo(string nacionalidad, string provincia, string direccion, string telefono, long dni, string apellido, string nombre, string razonSocial, long cuit) : base()
-        {
-            _razonSocial = razonSocial;
-            _cuit = cuit;
+            Console.WriteLine("Ingresar razon social: ");
+            this._razonSocial=Console.ReadLine();
+            IngresarCuit();
         }
 
         public string RazonSocial
@@ -33,6 +28,20 @@ namespace Dominio
         {
             get => _cuit;
             set => _cuit = value;
+        }
+
+        private void IngresarCuit()
+        {
+            Console.WriteLine("Ingresar C.U.I.T.: ");
+            var cuitString = Console.ReadLine();
+            var esLong = long.TryParse(cuitString, out long cuit);
+            while(!esLong || cuitString.Length != 11)
+            {
+                Console.WriteLine("C.U.I.T. incorrecto!");
+                Console.Write("Vuelve a ingresar el C.U.I.T.: ");
+                esLong = long.TryParse(cuitString, out cuit);
+            }
+            this._cuit = cuit;
         }
     }
 }

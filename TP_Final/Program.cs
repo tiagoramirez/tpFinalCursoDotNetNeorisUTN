@@ -12,11 +12,22 @@ namespace TP_Final
             var terminar = false;
             while (!terminar)
             {
-                var opc=Menus.MostrarMenuPrincipalEIngresarOpcion();
+                var opc = Menus.MenuPrincipal();
                 
                 switch (opc)
                 {
                     case '1':
+                        {
+                            var opcCase1 = Menus.MenuCrearCliente();
+                            if (opcCase1 == '1')
+                            {
+                                var nuevoCliente = new Particular();
+                            }
+                            else
+                            {
+                                var nuevoCliente = new Corporativo();
+                            }
+                        }
                         break;
                     case '2':
                         break;

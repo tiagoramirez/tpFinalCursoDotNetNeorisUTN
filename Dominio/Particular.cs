@@ -8,55 +8,57 @@ namespace Dominio
 {
     public class Particular : Cliente
     {
-        private long dni;
-        private string apellido;
-        private string nombre;
+        private long _dni;
+        private string _apellido;
+        private string _nombre;
 
         public Particular():base() {
             IngresarDni();
             Console.WriteLine("Ingresa apellido: ");
-            this.apellido = Console.ReadLine();
+            this._apellido = Console.ReadLine();
             Console.WriteLine("Ingresa nombre: ");
-            this.nombre = Console.ReadLine();
+            this._nombre = Console.ReadLine();
         }
 
         public long Dni
         {
-            get => dni;
-            set => dni = value;
+            get => _dni;
+            set => _dni = value;
         }
 
         public string Apellido
         {
-            get => apellido;
-            set => apellido = value;
+            get => _apellido;
+            set => _apellido = value;
         }
 
         public string Nombre
         {
-            get => nombre;
-            set => nombre = value;
+            get => _nombre;
+            set => _nombre = value;
         }
 
         public override void MostrarCliente()
         {
             base.MostrarCliente();
-            Console.WriteLine($"D.N.I.: {this.dni}");
-            Console.WriteLine($"Apellido: {this.apellido}");
-            Console.WriteLine($"Nombre: {this.nombre}");
+            Console.WriteLine($"D.N.I. del viajante: {this._dni}");
+            Console.WriteLine($"Apellido: {this._apellido}");
+            Console.WriteLine($"Nombre: {this._nombre}");
         }
 
         private void IngresarDni()
         {
-            Console.Write("Ingresar D.N.I.: ");
+            Console.Write("Ingresar D.N.I. del viajante: ");
             var dniString = Console.ReadLine();
             var esInt = int.TryParse(dniString, out int dni);
             while(!esInt || dniString.Length != 8)
             {
+                Console.WriteLine("D.N.I. incorrecto!");
+                Console.Write("Vuelve a ingresar el D.N.I. del viajante: ");
                 dniString = Console.ReadLine();
                 esInt = int.TryParse(dniString, out dni);
             }
-            this.dni=dni;
+            this._dni=dni;
         }
     }
 }
