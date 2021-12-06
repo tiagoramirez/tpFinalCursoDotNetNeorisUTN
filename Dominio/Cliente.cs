@@ -61,5 +61,12 @@ namespace Dominio
                               + "Direccion: " + this._direccion + "\n"
                               + "Telefono: " + this._telefono + "\n");
         }
+
+        public string IngresarProvincia()
+        {
+
+            
+            return "";
+        }
     }
 }

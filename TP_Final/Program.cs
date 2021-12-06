@@ -12,15 +12,9 @@ namespace TP_Final
             var terminar = false;
             while (!terminar)
             {
-                Menus.MostrarMenuPrincipal();
-                var opc = Console.ReadKey(true);
-                while (opc.KeyChar != '1' && opc.KeyChar != '2' && opc.KeyChar != '3' && opc.KeyChar != '4' && opc.KeyChar != '5' && opc.KeyChar != '6')
-                {
-                    opc = Console.ReadKey(true);
-                }
-                Console.Clear();
-
-                switch (opc.KeyChar)
+                var opc=Menus.MostrarMenuPrincipalEIngresarOpcion();
+                
+                switch (opc)
                 {
                     case '1':
                         break;
