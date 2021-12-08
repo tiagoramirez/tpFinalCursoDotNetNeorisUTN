@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Cliente
+    public abstract class Cliente
     {
         private int _id;
         private string _nacionalidad;
@@ -17,11 +17,15 @@ namespace Dominio
         public Cliente() {
             Console.Write("Ingresa nacionalidad: ");
             this._nacionalidad = Console.ReadLine();
+            Console.Clear();
             IngresarProvincia();
+            Console.Clear();
             Console.Write("Ingresa direccion: ");
             this._direccion = Console.ReadLine();
+            Console.Clear();
             Console.Write("Ingresa telefono: ");
             this._telefono = Console.ReadLine();
+            Console.Clear();
         }
 
         public string Nacionalidad
@@ -88,6 +92,7 @@ namespace Dominio
             Console.WriteLine("22: Santiago del Estero");
             Console.WriteLine("23: Tierra del Fuego");
             Console.WriteLine("24: Tucumán");
+            Console.Write("Ingrese provincia: ");
 
             var esInt = int.TryParse(Console.ReadLine(), out int opc);
             while (opc < 1 || opc > 24 || !esInt)

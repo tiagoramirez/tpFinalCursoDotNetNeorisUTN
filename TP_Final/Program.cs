@@ -22,10 +22,12 @@ namespace TP_Final
                             if (opcCase1 == '1')
                             {
                                 var nuevoCliente = new Particular();
+                                //nuevoCliente.MostrarCliente(); para probar si funciona
                             }
                             else
                             {
                                 var nuevoCliente = new Corporativo();
+                                //nuevoCliente.MostrarCliente(); para probar si funciona
                             }
                         }
                         break;
@@ -41,31 +43,6 @@ namespace TP_Final
                         break;
                 }
             }
-            
-            //Esto por el momento lo vamos a inutilizar y a la larga agregarlo en alguna parte de la creacion del cliente!
-
-            /*Cliente c = new Cliente();
-            ConsoleKeyInfo continuar;
-            string prov;
-
-            do
-            {
-                Console.WriteLine("Ingrese Provincia: ");
-                prov = Console.ReadLine();
-                //formateo de texto de entrada
-                //se quitan los espacios y
-                //se ponen las primeras letras en mayúsculas
-                prov = (CultureInfo.InvariantCulture.TextInfo.ToTitleCase(prov));
-                Console.WriteLine(prov);
-                prov = Regex.Replace(prov, @"\s", "");
-
-                Console.WriteLine(prov);
-                c.Provincia = prov;
-
-                Console.WriteLine("Continuar? (s/n)");
-                continuar = Console.ReadKey(true);
-            } while (continuar.KeyChar != 'n' && continuar.KeyChar != 'N');
-            Console.WriteLine(c.Provincia);*/
         }
     }
 }

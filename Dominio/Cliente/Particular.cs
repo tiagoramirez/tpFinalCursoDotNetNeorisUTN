@@ -14,10 +14,13 @@ namespace Dominio
 
         public Particular():base() {
             IngresarDni();
-            Console.WriteLine("Ingresa apellido: ");
+            Console.Clear();
+            Console.Write("Ingresa apellido: ");
             this._apellido = Console.ReadLine();
-            Console.WriteLine("Ingresa nombre: ");
+            Console.Clear();
+            Console.Write("Ingresa nombre: ");
             this._nombre = Console.ReadLine();
+            Console.Clear();
         }
 
         public long Dni

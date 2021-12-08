@@ -47,15 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs" />
-    <Compile Include="Corporativo.cs" />
+    <Compile Include="Cliente\Cliente.cs" />
+    <Compile Include="Cliente\Corporativo.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Internacional.cs" />
     <Compile Include="Lugar.cs" />
     <Compile Include="Nacional.cs" />
     <Compile Include="Pago.cs" />
     <Compile Include="Paquete.cs" />
-    <Compile Include="Particular.cs" />
+    <Compile Include="Cliente\Particular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
