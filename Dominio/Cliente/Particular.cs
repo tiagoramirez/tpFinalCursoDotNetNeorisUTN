@@ -8,45 +8,27 @@ namespace Dominio
 {
     public class Particular : Cliente
     {
-        private long _dni;
-        private string _apellido;
-        private string _nombre;
+        public int Dni { get; set; }
+        public string Apellido { get; set; }
+        public string Nombre { get; set; }
 
         public Particular():base() {
             IngresarDni();
             Console.Clear();
             Console.Write("Ingresa apellido: ");
-            this._apellido = Console.ReadLine();
+            this.Apellido = Console.ReadLine();
             Console.Clear();
             Console.Write("Ingresa nombre: ");
-            this._nombre = Console.ReadLine();
+            this.Nombre = Console.ReadLine();
             Console.Clear();
-        }
-
-        public long Dni
-        {
-            get => _dni;
-            set => _dni = value;
-        }
-
-        public string Apellido
-        {
-            get => _apellido;
-            set => _apellido = value;
-        }
-
-        public string Nombre
-        {
-            get => _nombre;
-            set => _nombre = value;
         }
 
         public override void MostrarCliente()
         {
             base.MostrarCliente();
-            Console.WriteLine($"D.N.I. del viajante: {this._dni}");
-            Console.WriteLine($"Apellido: {this._apellido}");
-            Console.WriteLine($"Nombre: {this._nombre}");
+            Console.WriteLine($"D.N.I. del viajante: {this.Dni}");
+            Console.WriteLine($"Apellido: {this.Apellido}");
+            Console.WriteLine($"Nombre: {this.Nombre}");
         }
 
         private void IngresarDni()
@@ -61,7 +43,7 @@ namespace Dominio
                 dniString = Console.ReadLine();
                 esInt = int.TryParse(dniString, out dni);
             }
-            this._dni=dni;
+            this.Dni=dni;
         }
     }
 }

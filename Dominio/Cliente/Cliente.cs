@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,56 +9,34 @@ namespace Dominio
 {
     public abstract class Cliente
     {
-        private int _id;
-        private string _nacionalidad;
-        private string _provincia;
-        private string _direccion;
-        private string _telefono;
+        [Key]
+        public int Id { get; set; }
+        public string Nacionalidad { get; set; }
+        public string Provincia { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+                        
 
         public Cliente() {
             Console.Write("Ingresa nacionalidad: ");
-            this._nacionalidad = Console.ReadLine();
+            this.Nacionalidad = Console.ReadLine();
             Console.Clear();
             IngresarProvincia();
             Console.Clear();
             Console.Write("Ingresa direccion: ");
-            this._direccion = Console.ReadLine();
+            this.Direccion = Console.ReadLine();
             Console.Clear();
             Console.Write("Ingresa telefono: ");
-            this._telefono = Console.ReadLine();
+            this.Telefono = Console.ReadLine();
             Console.Clear();
         }
-
-        public string Nacionalidad
-        {
-            get => _nacionalidad;
-            set => _nacionalidad = value;
-        }
-
-        public string Provincia
-        {
-            get => _provincia;
-            set => _provincia = value;
-        }
-
-        public string Direccion
-        {
-            get => _direccion;
-            set => _direccion = value;
-        }
-
-        public string Telefono
-        {
-            get => _telefono;
-            set => _telefono = value;
-        }
-
         public virtual void MostrarCliente()
         {
-            Console.WriteLine("Nacionalidad: " + this._nacionalidad);
-            Console.WriteLine("Provincia: " + this._provincia);
-            Console.WriteLine("Direccion: " + this._direccion);
-            Console.WriteLine("Telefono: " + this._telefono);
+            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"Nacionalidad: {Nacionalidad}");
+            Console.WriteLine($"Provincia: {Provincia}");
+            Console.WriteLine($"Direccion: {Direccion}");
+            Console.WriteLine($"Telefono: {Telefono}");
         }
 
         private void IngresarProvincia()
@@ -109,53 +88,53 @@ namespace Dominio
         {
             switch (opc)
             {
-                case 1: _provincia= "Buenos Aires";
+                case 1: Provincia= "Buenos Aires";
                     break;
-                case 2: _provincia = "Capital Federal";
+                case 2: Provincia = "Capital Federal";
                     break;
-                case 3: _provincia = "Catamarca";
+                case 3: Provincia = "Catamarca";
                     break;
-                case 4: _provincia = "Chaco";
+                case 4: Provincia = "Chaco";
                     break;
-                case 5: _provincia = "Chubut";
+                case 5: Provincia = "Chubut";
                     break;
-                case 6: _provincia = "Córdoba";
+                case 6: Provincia = "Córdoba";
                     break;
-                case 7: _provincia = "Corrientes";
+                case 7: Provincia = "Corrientes";
                     break;
-                case 8: _provincia = "Entre Ríos";
+                case 8: Provincia = "Entre Ríos";
                     break;
-                case 9: _provincia = "Formosa";
+                case 9: Provincia = "Formosa";
                     break;
-                case 10: _provincia = "Jujuy";
+                case 10: Provincia = "Jujuy";
                     break;
-                case 11: _provincia = "La Pampa";
+                case 11: Provincia = "La Pampa";
                     break;
-                case 12: _provincia = "La Rioja";
+                case 12: Provincia = "La Rioja";
                     break;
-                case 13: _provincia = "Mendoza";
+                case 13: Provincia = "Mendoza";
                     break;
-                case 14: _provincia = "Misiones";
+                case 14: Provincia = "Misiones";
                     break;
-                case 15: _provincia = "Neuquén";
+                case 15: Provincia = "Neuquén";
                     break;
-                case 16: _provincia = "Río Negro";
+                case 16: Provincia = "Río Negro";
                     break;
-                case 17: _provincia = "Salta";
+                case 17: Provincia = "Salta";
                     break;
-                case 18: _provincia = "San Juan";
+                case 18: Provincia = "San Juan";
                     break;
-                case 19: _provincia = "San Luis";
+                case 19: Provincia = "San Luis";
                     break;
-                case 20: _provincia = "Santa Cruz";
+                case 20: Provincia = "Santa Cruz";
                     break;
-                case 21: _provincia = "Santa Fe";
+                case 21: Provincia = "Santa Fe";
                     break;
-                case 22: _provincia = "Santiago del Estero";
+                case 22: Provincia = "Santiago del Estero";
                     break;
-                case 23: _provincia = "Tierra del Fuego";
+                case 23: Provincia = "Tierra del Fuego";
                     break;
-                case 24: _provincia = "Tucumán";
+                case 24: Provincia = "Tucumán";
                     break;
             }
         }

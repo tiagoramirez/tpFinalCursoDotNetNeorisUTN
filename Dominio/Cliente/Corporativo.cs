@@ -8,13 +8,13 @@ namespace Dominio
 {
     public class Corporativo : Particular
     {
-        private string _razonSocial;
-        private long _cuit;
+        public string RazonSocial { get; set; }
+        public long Cuit { get; set; }
 
         public Corporativo():base()
         {
             Console.Write("Ingresar razon social: ");
-            this._razonSocial=Console.ReadLine();
+            this.RazonSocial=Console.ReadLine();
             Console.Clear();
             IngresarCuit();
             Console.Clear();
@@ -23,20 +23,8 @@ namespace Dominio
         public override void MostrarCliente()
         {
             base.MostrarCliente();
-            Console.WriteLine($"Razon social: {_razonSocial}");
-            Console.WriteLine($"C.U.I.T.: {_cuit}");
-        }
-
-        public string RazonSocial
-        {
-            get => _razonSocial;
-            set => _razonSocial = value;
-        }
-
-        public long Cuit
-        {
-            get => _cuit;
-            set => _cuit = value;
+            Console.WriteLine($"Razon social: {RazonSocial}");
+            Console.WriteLine($"C.U.I.T.: {Cuit}");
         }
 
         private void IngresarCuit()
@@ -51,7 +39,7 @@ namespace Dominio
                 cuitString = Console.ReadLine();
                 esLong = long.TryParse(cuitString, out cuit);
             }
-            this._cuit = cuit;
+            this.Cuit = cuit;
         }
     }
 }

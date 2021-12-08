@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Datos;
+using Dominio;
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -22,12 +23,35 @@ namespace TP_Final
                             if (opcCase1 == '1')
                             {
                                 var nuevoCliente = new Particular();
-                                //nuevoCliente.MostrarCliente(); para probar si funciona
+                                try
+                                {
+                                    using (var context = new TPContext())
+                                    {
+                                        context.Clientes.Add(nuevoCliente);
+                                        context.SaveChanges();
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine($"Error!!!! \n {e.Message}");
+                                }
+                                
                             }
                             else
                             {
                                 var nuevoCliente = new Corporativo();
-                                //nuevoCliente.MostrarCliente(); para probar si funciona
+                                try
+                                {
+                                    using (var context = new TPContext())
+                                    {
+                                        context.Clientes.Add(nuevoCliente);
+                                        context.SaveChanges();
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine($"Error!!!! \n {e.Message}");
+                                }
                             }
                         }
                         break;
