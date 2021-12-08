@@ -1,8 +1,7 @@
 ﻿using Datos;
 using Dominio;
+using Controlador;
 using System;
-using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace TP_Final
 {
@@ -23,35 +22,12 @@ namespace TP_Final
                             if (opcCase1 == '1')
                             {
                                 var nuevoCliente = new Particular();
-                                try
-                                {
-                                    using (var context = new TPContext())
-                                    {
-                                        context.Clientes.Add(nuevoCliente);
-                                        context.SaveChanges();
-                                    }
-                                }
-                                catch (Exception e)
-                                {
-                                    Console.WriteLine($"Error!!!! \n {e.Message}");
-                                }
-                                
+                                ControladorCliente.AgregarBd(nuevoCliente);
                             }
                             else
                             {
                                 var nuevoCliente = new Corporativo();
-                                try
-                                {
-                                    using (var context = new TPContext())
-                                    {
-                                        context.Clientes.Add(nuevoCliente);
-                                        context.SaveChanges();
-                                    }
-                                }
-                                catch (Exception e)
-                                {
-                                    Console.WriteLine($"Error!!!! \n {e.Message}");
-                                }
+                                ControladorCliente.AgregarBd(nuevoCliente);
                             }
                         }
                         break;
