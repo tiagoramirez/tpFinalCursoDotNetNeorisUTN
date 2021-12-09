@@ -15,7 +15,8 @@ namespace Dominio
         public string Provincia { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-                        
+        public int Dni { get; set; }
+
 
         public Cliente() {  }
 
@@ -32,6 +33,7 @@ namespace Dominio
             Console.Write("Ingresa telefono: ");
             this.Telefono = Console.ReadLine();
             Console.Clear();
+            IngresarDni();
         }
 
         public virtual void MostrarCliente()
@@ -141,6 +143,21 @@ namespace Dominio
                 case 24: Provincia = "Tucumán";
                     break;
             }
+        }
+
+        private void IngresarDni()
+        {
+            Console.Write("Ingresar D.N.I. del viajante: ");
+            var dniString = Console.ReadLine();
+            var esInt = int.TryParse(dniString, out int dni);
+            while (!esInt || dniString.Length != 8)
+            {
+                Console.WriteLine("D.N.I. incorrecto!");
+                Console.Write("Vuelve a ingresar el D.N.I. del viajante: ");
+                dniString = Console.ReadLine();
+                esInt = int.TryParse(dniString, out dni);
+            }
+            this.Dni = dni;
         }
     }
 }

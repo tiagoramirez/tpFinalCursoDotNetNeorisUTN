@@ -10,25 +10,17 @@ namespace Dominio
     public class Factura
     {
         [Key]
-        public int idFactura { set; get; }
-        private int idCliente;
-        private double importeTotal;
-        private Paquete paquete;
-        private DateTime fechaEmisionFactura;
+        public int IdFactura { get; set; }
+        public int IdCliente { get; set; }
+        public int IdPaquete { get; set; }
+        public double ImporteTotal { get; set; }
+        public DateTime FechaEmisionFactura { get; set; } = DateTime.Now;
 
-        public Factura(int idCliente, double importeTotal, Paquete paquete, DateTime fechaEmisionFactura)
+        public Factura()
+        {   }
+        public Factura(int idCliente,int idPaquete)
         {
-            this.idCliente = idCliente;
-            this.importeTotal = importeTotal;
-            this.paquete = paquete;
-            this.fechaEmisionFactura = fechaEmisionFactura;
+
         }
-
-        public int IdCliente { get => idCliente; set => idCliente = value; }
-        public double ImporteTotal { get => importeTotal; set => importeTotal = value; }
-        public Paquete Paquete { get => paquete; set => paquete = value; }
-        public DateTime FechaEmisionFactura { get => fechaEmisionFactura; set => fechaEmisionFactura = value; }
-       
-
     }
 }

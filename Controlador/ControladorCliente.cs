@@ -44,7 +44,7 @@ namespace Controlador
             return clientes;
         }
 
-        public static Cliente EncontrarId(int id)
+        public static Cliente ObtenerId(int id)
         {
             var res=new Particular();
             try
@@ -52,6 +52,40 @@ namespace Controlador
                 using (var context = new TPContext())
                 {
                     res=(Particular)context.Clientes.Find(id);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+            }
+            return res;
+        }
+
+        public static bool ExisteClienteId(int id)
+        {
+            bool res=false;
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    res=context.Clientes.Any(x=>x.Id==id);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+            }
+            return res;
+        }
+
+        public static bool ExisteClienteDni(int dni)
+        {
+            bool res = false;
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    res = context.Clientes.Any(x=>x.Dni==dni);
                 }
             }
             catch (Exception e)
