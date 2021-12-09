@@ -2,6 +2,7 @@
 using Dominio;
 using Controlador;
 using System;
+using System.Collections.Generic;
 
 namespace TP_Final
 {
@@ -22,11 +23,13 @@ namespace TP_Final
                             if (opcCase1 == '1')
                             {
                                 var nuevoCliente = new Particular();
+                                nuevoCliente.CargarCliente();
                                 ControladorCliente.AgregarBd(nuevoCliente);
                             }
                             else
                             {
                                 var nuevoCliente = new Corporativo();
+                                nuevoCliente.CargarCliente();
                                 ControladorCliente.AgregarBd(nuevoCliente);
                             }
                         }

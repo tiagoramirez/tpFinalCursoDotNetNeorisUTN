@@ -17,7 +17,10 @@ namespace Dominio
         public string Telefono { get; set; }
                         
 
-        public Cliente() {
+        public Cliente() {  }
+
+        public virtual void CargarCliente()
+        {
             Console.Write("Ingresa nacionalidad: ");
             this.Nacionalidad = Console.ReadLine();
             Console.Clear();
@@ -30,6 +33,7 @@ namespace Dominio
             this.Telefono = Console.ReadLine();
             Console.Clear();
         }
+
         public virtual void MostrarCliente()
         {
             Console.WriteLine($"ID: {Id}");

@@ -12,9 +12,13 @@ namespace Dominio
         public long Cuit { get; set; }
 
         public Corporativo():base()
-        {
+        {   }
+
+        public override void CargarCliente()
+        { 
+            base.CargarCliente();
             Console.Write("Ingresar razon social: ");
-            this.RazonSocial=Console.ReadLine();
+            this.RazonSocial = Console.ReadLine();
             Console.Clear();
             IngresarCuit();
             Console.Clear();

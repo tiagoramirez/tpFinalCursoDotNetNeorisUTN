@@ -12,7 +12,12 @@ namespace Dominio
         public string Apellido { get; set; }
         public string Nombre { get; set; }
 
-        public Particular():base() {
+        public Particular():base()
+        {   }
+
+        public override void CargarCliente()
+        {
+            base.CargarCliente();
             IngresarDni();
             Console.Clear();
             Console.Write("Ingresa apellido: ");

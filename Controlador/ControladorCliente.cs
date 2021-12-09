@@ -25,5 +25,40 @@ namespace Controlador
                 Console.WriteLine($"Error!!!! \n {e.Message}");
             }
         }
+
+        public static List<Cliente> ObtenerClientes()
+        {
+            List<Cliente> clientes = null;
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    clientes = context.Clientes.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+            }
+
+            return clientes;
+        }
+
+        public static Cliente EncontrarId(int id)
+        {
+            var res=new Particular();
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    res=(Particular)context.Clientes.Find(id);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+            }
+            return res;
+        }
     }
 }
