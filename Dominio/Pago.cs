@@ -9,6 +9,8 @@ namespace Dominio
     public  class Pago
     {
         //si el pago es al contado la cantidad de cuotas seria 0 y el valor por cuota no aplicaria 
+        [key]
+        public int idPago { get; set; }
         private int cantidadDeCuotas;
         private double valorPorCuota;
 

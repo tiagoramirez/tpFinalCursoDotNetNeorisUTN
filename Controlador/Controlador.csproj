@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorPaquete.cs" />
     <Compile Include="ControladorCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

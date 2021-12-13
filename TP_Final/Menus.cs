@@ -39,5 +39,19 @@ namespace TP_Final
             Console.Clear();
             return opc.KeyChar;
         }
+        public static char MenuCrearPaquete()
+        {
+            Console.WriteLine("1: Paquete Particular");
+            Console.WriteLine("2: Paquete Internacional");
+
+            var opc = Console.ReadKey(true);
+            while (opc.KeyChar < '1' || opc.KeyChar > '2')
+            {
+                opc = Console.ReadKey(true);
+            }
+            Console.Clear();
+            return opc.KeyChar;
+        }
+        
     }
 }

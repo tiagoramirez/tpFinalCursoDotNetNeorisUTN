@@ -52,6 +52,7 @@
     <Compile Include="Cliente\Corporativo.cs" />
     <Compile Include="Factura.cs" />
     <Compile Include="Internacional.cs" />
+    <Compile Include="keyAttribute.cs" />
     <Compile Include="Lugar.cs" />
     <Compile Include="Nacional.cs" />
     <Compile Include="Pago.cs" />

@@ -8,20 +8,38 @@ namespace Dominio
 {
     public class Nacional : Paquete
     {
-        public Nacional(bool requiereVisa, double contisacionDolar, string nombre, double precioBase,
-            Lugar[] listaLugares, int cantidadDiasTotales, DateTime fechaDeViaje, bool vigente  )
-         : base(nombre, precioBase, listaLugares, cantidadDiasTotales, fechaDeViaje, vigente )
+       
+        public Nacional(int _cuotaMax ){
+            this.CuotaMaxima = _cuotaMax;
+        }
+        public override void insertarPaquete()
         {
-
+            base.insertarPaquete();
+           
         }
         public double SetImpuestoPorcentaje(double porcentaje)
         {
             return (PrecioBase * porcentaje) + PrecioBase;
         }
 
-        protected override bool cargarPago(int cantidadDeCuotas, double valorPorCuota)
+        public  override  bool  cargarPago(int cantidadCoutas,double porcentaje)
         {
-            throw new NotImplementedException();
+            double valorPorCuota = 0;
+           
+            if (cantidadCoutas > 0) {
+                valorPorCuota = SetImpuestoPorcentaje(porcentaje/100) / cantidadCoutas;
+            }
+            if (cantidadCoutas > CuotaMaxima)
+                return false;
+            else
+            {
+                this.pago = new Pago(cantidadCoutas, valorPorCuota);
+                return true;
+            }
+            
         }
+         
+
+
     }
 }

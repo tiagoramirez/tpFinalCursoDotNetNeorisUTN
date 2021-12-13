@@ -13,5 +13,6 @@ namespace Datos
         public TPContext() : base("TPContext")
         { }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Paquete> Paquetes { get; set; }
     }
 }
