@@ -13,7 +13,7 @@ namespace Dominio
         public  int IdPaquete { get   ; set ; }
         private string nombre;
         private double precioBase;
-        private Lugar[] listaLugares = new Lugar[10];
+        private List<Lugar> listaLugar = new List<Lugar>();
         private int cantidadDiasTotales;
         private DateTime fechaDeViaje;
         private bool vigente;
@@ -25,8 +25,8 @@ namespace Dominio
         public int CantidadDiasTotales { get => cantidadDiasTotales; set => cantidadDiasTotales = value; }
         public DateTime FechaDeViaje { get => fechaDeViaje; set => fechaDeViaje = value; }
         public bool Vigente { get => vigente; set => vigente = value; }
-         
-        public  Lugar[] ListaLugares { get => listaLugares; set => listaLugares = value; }
+        public List<Lugar> ListaLugar { get => listaLugar; set => listaLugar = value; }
+
         public   abstract bool cargarPago(int cantidadCoutas,double porcentaje);
         
         public virtual void insertarPaquete()
@@ -50,7 +50,7 @@ namespace Dominio
             } while (cantidad > 10);
             for(int i = 0; i < cantidad; i++)
             {
-               listaLugares[i] = ingresarLugar();
+             listaLugar.Add( ingresarLugar());
             }
             Console.Write("Ingrese la cantidad de dias totales");
              int.TryParse(Console.ReadLine(),out this.cantidadDiasTotales);
@@ -94,20 +94,20 @@ namespace Dominio
         }
         public virtual void MostrarPaquete()
         {
-            Console.WriteLine($"idPaquete: {IdPaquete}");
+           /* Console.WriteLine($"idPaquete: {IdPaquete}");
             Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine($"PrecioBase: {precioBase}");
             Console.WriteLine("Lista de lugares al que viaja");
-            for (int i = 0; i < listaLugares.Length; i++)
+            for (int i = 0; i < this.listaLugar.Count(); i++)
             {
-                Console.WriteLine($"Pais: {ListaLugares[i].Pais}");
+                Console.WriteLine($"Pais: {ListaLugares.Pais}");
                 Console.WriteLine($"Ciudad: {ListaLugares[i].Ciudad}");
                 Console.WriteLine($"FechaLLegada: {ListaLugares[i].FechaLLegada}");
                 Console.WriteLine($"FechaSalida: {ListaLugares[i].FechaSalida}");
             }
             Console.WriteLine($"Direccion: {CantidadDiasTotales}");
             Console.WriteLine($"FechaDeViaje: {fechaDeViaje}");
-            Console.WriteLine($"Vigente: {vigente}");
+            Console.WriteLine($"Vigente: {vigente}");*/
         }
     }
 }

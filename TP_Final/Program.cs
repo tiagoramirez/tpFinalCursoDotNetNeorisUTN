@@ -72,6 +72,7 @@ namespace TP_Final
                             Console.Write($"La cantidad de cuotas no puede ser mayor a {nuevoPaquete.CuotaMaxima}");
                             int.TryParse(Console.ReadLine(), out cantidadCuotas);
                         }
+
                         ControladorPaquete.AgregarBd(nuevoPaquete);
                         break;
                     case '3':
