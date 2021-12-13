@@ -41,7 +41,7 @@ namespace TP_Final
         }
         public static char MenuCrearPaquete()
         {
-            Console.WriteLine("1: Paquete Particular");
+            Console.WriteLine("1: Paquete Nacional");
             Console.WriteLine("2: Paquete Internacional");
 
             var opc = Console.ReadKey(true);

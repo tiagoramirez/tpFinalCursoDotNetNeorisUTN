@@ -1,8 +1,5 @@
-﻿using Datos;
-using Dominio;
+﻿using Dominio;
 using Controlador;
-using System;
-using System.Collections.Generic;
 
 namespace TP_Final
 {
@@ -35,47 +32,24 @@ namespace TP_Final
                         }
                         break;
                     case '2':
-                        
-                        var opcCase2 = Menus.MenuCrearPaquete();
-                        int cantidadCuotas=0;
-                        Paquete nuevoPaquete;
-                        double impuesto;
-                        if (opcCase2 == '1')
-                        {
-                        
-                            nuevoPaquete = new Nacional(12);
-                            nuevoPaquete.insertarPaquete();
-                            Console.Write("Ingrese el porcentaje del paquete nacional ");
-                            double.TryParse(Console.ReadLine(), out impuesto);
-                            Console.Clear();
-                            while (impuesto< 0 || impuesto > 100 )
-                            {
-                                Console.Write("El porcentaje debe estar entre 0 y 100 ");
-                                Console.Write("Ingrese el porcentaje del paquete nacional ");
-                                double.TryParse(Console.ReadLine(), out impuesto);
-                            }
-                        }
-                        else
-                        {
-                            nuevoPaquete = new Internacional(6);
-                            nuevoPaquete.insertarPaquete();
-                            Console.Write("Ingrese el valor del impuesto a aplicar del paquete internacional ");
-                            double.TryParse(Console.ReadLine(), out impuesto);
-                            Console.Clear();                           
-                        }
-
-                        Console.Write("Ingrese la cantidad de cuotas");
-                        int.TryParse(Console.ReadLine(), out cantidadCuotas);
-                       
-                        while (!nuevoPaquete.cargarPago(cantidadCuotas, impuesto))
-                        {
-                            Console.Write($"La cantidad de cuotas no puede ser mayor a {nuevoPaquete.CuotaMaxima}");
-                            int.TryParse(Console.ReadLine(), out cantidadCuotas);
-                        }
-
-                        ControladorPaquete.AgregarBd(nuevoPaquete);
+                        //crearLugares
                         break;
                     case '3':
+                        {
+                            var opcCase3 = Menus.MenuCrearPaquete();
+                            if (opcCase3 == '1')
+                            {
+                                var nuevoPaquete = new Nacional();
+                                nuevoPaquete.CargarPaquete();
+                                ControladorPaquete.AgregarBd(nuevoPaquete);
+                            }
+                            else
+                            {
+                                var nuevoPaquete = new Internacional();
+                                nuevoPaquete.CargarPaquete();
+                                ControladorPaquete.AgregarBd(nuevoPaquete);
+                            }
+                        }
                         break;
                     case '4':
                         break;

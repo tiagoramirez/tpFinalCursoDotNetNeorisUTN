@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
@@ -18,7 +14,7 @@ namespace Dominio
         public int Dni { get; set; }
 
 
-        public Cliente() {  }
+        public Cliente() { }
 
         public virtual void CargarCliente()
         {
@@ -47,7 +43,7 @@ namespace Dominio
 
         private void IngresarProvincia()
         {
-            var opc=MostrarProvinciasEIngresarOpcion();
+            var opc = MostrarProvinciasEIngresarOpcion();
             SetProvincia(opc);
         }
 
@@ -94,53 +90,77 @@ namespace Dominio
         {
             switch (opc)
             {
-                case 1: Provincia= "Buenos Aires";
+                case 1:
+                    Provincia = "Buenos Aires";
                     break;
-                case 2: Provincia = "Capital Federal";
+                case 2:
+                    Provincia = "Capital Federal";
                     break;
-                case 3: Provincia = "Catamarca";
+                case 3:
+                    Provincia = "Catamarca";
                     break;
-                case 4: Provincia = "Chaco";
+                case 4:
+                    Provincia = "Chaco";
                     break;
-                case 5: Provincia = "Chubut";
+                case 5:
+                    Provincia = "Chubut";
                     break;
-                case 6: Provincia = "Córdoba";
+                case 6:
+                    Provincia = "Córdoba";
                     break;
-                case 7: Provincia = "Corrientes";
+                case 7:
+                    Provincia = "Corrientes";
                     break;
-                case 8: Provincia = "Entre Ríos";
+                case 8:
+                    Provincia = "Entre Ríos";
                     break;
-                case 9: Provincia = "Formosa";
+                case 9:
+                    Provincia = "Formosa";
                     break;
-                case 10: Provincia = "Jujuy";
+                case 10:
+                    Provincia = "Jujuy";
                     break;
-                case 11: Provincia = "La Pampa";
+                case 11:
+                    Provincia = "La Pampa";
                     break;
-                case 12: Provincia = "La Rioja";
+                case 12:
+                    Provincia = "La Rioja";
                     break;
-                case 13: Provincia = "Mendoza";
+                case 13:
+                    Provincia = "Mendoza";
                     break;
-                case 14: Provincia = "Misiones";
+                case 14:
+                    Provincia = "Misiones";
                     break;
-                case 15: Provincia = "Neuquén";
+                case 15:
+                    Provincia = "Neuquén";
                     break;
-                case 16: Provincia = "Río Negro";
+                case 16:
+                    Provincia = "Río Negro";
                     break;
-                case 17: Provincia = "Salta";
+                case 17:
+                    Provincia = "Salta";
                     break;
-                case 18: Provincia = "San Juan";
+                case 18:
+                    Provincia = "San Juan";
                     break;
-                case 19: Provincia = "San Luis";
+                case 19:
+                    Provincia = "San Luis";
                     break;
-                case 20: Provincia = "Santa Cruz";
+                case 20:
+                    Provincia = "Santa Cruz";
                     break;
-                case 21: Provincia = "Santa Fe";
+                case 21:
+                    Provincia = "Santa Fe";
                     break;
-                case 22: Provincia = "Santiago del Estero";
+                case 22:
+                    Provincia = "Santiago del Estero";
                     break;
-                case 23: Provincia = "Tierra del Fuego";
+                case 23:
+                    Provincia = "Tierra del Fuego";
                     break;
-                case 24: Provincia = "Tucumán";
+                case 24:
+                    Provincia = "Tucumán";
                     break;
             }
         }
