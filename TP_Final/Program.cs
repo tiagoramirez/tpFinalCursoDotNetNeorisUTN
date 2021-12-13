@@ -32,24 +32,29 @@ namespace TP_Final
                         }
                         break;
                     case '2':
-                        //crearLugares
+                        var opcCase2 = Menus.MenuCrearPaquete();
+                        if (opcCase2 == '1')
+                        {
+                            var nuevoPaquete = new Nacional();
+                            nuevoPaquete.CargarPaquete();
+                            foreach (var elem in nuevoPaquete.ListaLugares)
+                            {
+                                ControladorLugar.AgregarBd(elem);
+                            }
+                            ControladorPaquete.AgregarBd(nuevoPaquete);
+                        }
+                        else
+                        {
+                            var nuevoPaquete = new Internacional();
+                            nuevoPaquete.CargarPaquete();
+                            foreach (var elem in nuevoPaquete.ListaLugares)
+                            {
+                                ControladorLugar.AgregarBd(elem);
+                            }
+                            ControladorPaquete.AgregarBd(nuevoPaquete);
+                        }
                         break;
                     case '3':
-                        {
-                            var opcCase3 = Menus.MenuCrearPaquete();
-                            if (opcCase3 == '1')
-                            {
-                                var nuevoPaquete = new Nacional();
-                                nuevoPaquete.CargarPaquete();
-                                ControladorPaquete.AgregarBd(nuevoPaquete);
-                            }
-                            else
-                            {
-                                var nuevoPaquete = new Internacional();
-                                nuevoPaquete.CargarPaquete();
-                                ControladorPaquete.AgregarBd(nuevoPaquete);
-                            }
-                        }
                         break;
                     case '4':
                         break;

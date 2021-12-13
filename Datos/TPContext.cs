@@ -14,5 +14,6 @@ namespace Datos
         { }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Paquete> Paquetes { get; set; }
+        public DbSet<Lugar> Lugares { get; set; }
     }
 }

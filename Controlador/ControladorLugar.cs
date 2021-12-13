@@ -1,21 +1,22 @@
 ﻿using System;
+using Dominio;
+using Datos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos;
-using Dominio;
+
 namespace Controlador
 {
-    public class ControladorPaquete
+    public class ControladorLugar
     {
-        public static void AgregarBd(Paquete paquete)
+        public static void AgregarBd(Lugar lugar)
         {
             try
             {
                 using (var context = new TPContext())
                 {
-                    context.Paquetes.Add(paquete);
+                    context.Lugares.Add(lugar);
                     context.SaveChanges();
                 }
             }
@@ -25,14 +26,14 @@ namespace Controlador
             }
         }
 
-        public static List<Paquete> ObtenerPaquetes()
+        public static List<Lugar> ObtenerLugares()
         {
-            List<Paquete> paquetes = null;
+            List<Lugar> lugares = null;
             try
             {
                 using (var context = new TPContext())
                 {
-                    paquetes = context.Paquetes.ToList();
+                    lugares = context.Lugares.ToList();
                 }
             }
             catch (Exception e)
@@ -40,8 +41,7 @@ namespace Controlador
                 Console.WriteLine($"Error!!!! \n {e.Message}");
             }
 
-            return paquetes;
+            return lugares;
         }
-
     }
 }

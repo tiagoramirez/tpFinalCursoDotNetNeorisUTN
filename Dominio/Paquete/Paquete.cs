@@ -15,7 +15,7 @@ namespace Dominio
         private double precio;
         public double Precio { get => precio; set => precio = value; }
         public int CuotaMaxima { get; set; }
-        public List<Lugar> ListaLugares { get; set; }
+        public List<Lugar> ListaLugares { get; set; } = new List<Lugar>();
         private int cantidadDiasTotales;
         public int CantidadDiasTotales { get => cantidadDiasTotales; set => cantidadDiasTotales = value; }
         public DateTime FechaDeViaje { get; set; }
@@ -36,16 +36,16 @@ namespace Dominio
             Console.Clear();
             for (int i = 0; i < cantidad; i++)
             {
+                Console.WriteLine($"{i+1}/{cantidad}");
                 var lugar = new Lugar();
                 lugar.IngresarLugar();
                 ListaLugares.Add(lugar);
-                Console.WriteLine($"{i+1}/{cantidad}");
             }
 
             IngresaCantidadDiasTotales();
             Console.Clear();
 
-            Console.Write("Ingrese la fecha de inicio del viaje en el formato  dd / MM / yyyy");
+            Console.WriteLine("Ingrese la fecha de inicio del viaje en el formato  dd / MM / yyyy");
             while (DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out fechaViaje))
             {
                 Console.Write("Formato de Fecha Incorrecto");
