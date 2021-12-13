@@ -56,7 +56,7 @@
     <Compile Include="Lugar.cs" />
     <Compile Include="Nacional.cs" />
     <Compile Include="Pago.cs" />
-    <Compile Include="Paquete.cs" />
+    <Compile Include="Paquete\Paquete.cs" />
     <Compile Include="Cliente\Particular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

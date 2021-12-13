@@ -10,24 +10,54 @@ namespace Dominio
     public class Lugar
     {
         [Key]
-        private int idLugar;
-        private string pais;
-        private string ciudad;
-        private DateTime fechaLLegada;
+        public int Id { get; set; }
+        public string Pais { get; set; }
+        public string Ciudad { get; set; }
+        /*private DateTime fechaLLegada;
         private DateTime fechaSalida;
+        public DateTime FechaLLegada { get => fechaLLegada; set => fechaLLegada = value; }
+        public DateTime FechaSalida { get => fechaSalida; set => fechaSalida = value; }*/
 
-        public Lugar(string pais, string ciudad, DateTime fechaLLegada, DateTime fechaSalida)
+        public Lugar()
+        {   }
+
+        public void IngresarLugar()
         {
-            this.Pais = pais;
-            this.Ciudad = ciudad;
-            this.FechaLLegada = fechaLLegada;
-            this.FechaSalida = fechaSalida;
+            Console.Write("Ingrese el Pais el cual va a visitar: ");
+            Pais = Console.ReadLine();
+            Console.Clear();
+
+            Console.Write("Ingrese la Ciudad: ");
+            Ciudad = Console.ReadLine();
+            Console.Clear();
+
+            /*Console.WriteLine("Ingrese la fecha de llegada al lugar en el formato dd / MM / yyyy");
+            var esFecha = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out fechaLLegada);
+            while (!esFecha)
+            {
+                Console.WriteLine("Formato de Fecha Incorrecto");
+                Console.WriteLine("Ingrese la fecha de llegada al lugar en el formato dd / MM / yyyy");
+
+            }
+            Console.Clear();
+
+            Console.WriteLine("Ingrese la fecha de salida del lugar en el formato dd / MM / yyyy");
+            var esFecha2 = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out fechaSalida);
+            while (!esFecha2)
+            {
+                Console.WriteLine("Formato de Fecha Incorrecto");
+                Console.WriteLine("Ingrese la fecha de salida del lugar en el formato dd / MM / yyyy");
+
+            }
+            Console.Clear();*/
         }
 
-        public string Pais { get => pais; set => pais = value; }
-        public string Ciudad { get => ciudad; set => ciudad = value; }
-        public DateTime FechaLLegada { get => fechaLLegada; set => fechaLLegada = value; }
-        public DateTime FechaSalida { get => fechaSalida; set => fechaSalida = value; }
+        public void MostrarInfo()
+        {
+            Console.WriteLine($"ID del lugar: {Id}");
+            Console.WriteLine($"Pais: {Pais}");
+            Console.WriteLine($"Ciudad: {Ciudad}");
+        }
 
     }
 }
