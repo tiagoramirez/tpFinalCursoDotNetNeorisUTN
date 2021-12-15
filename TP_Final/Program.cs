@@ -38,9 +38,6 @@ namespace TP_Final
                         {
                             var nuevoPaquete = new Nacional();
                             nuevoPaquete.CargarPaquete();
-                            Console.Clear();
-                            nuevoPaquete.MostrarPaquete();
-                            Console.ReadKey();
                             ControladorPaquete.AgregarBd(nuevoPaquete);
                         }
                         else

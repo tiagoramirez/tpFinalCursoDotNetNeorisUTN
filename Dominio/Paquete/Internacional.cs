@@ -7,7 +7,7 @@ namespace Dominio
         public bool RequiereVisa { get; set; }
         public double CotizacionDolar { get; set; }
 
-        public Internacional()
+        public Internacional() : base()
         {   }
 
         public bool SetImpuestoFijo(double impuesto)

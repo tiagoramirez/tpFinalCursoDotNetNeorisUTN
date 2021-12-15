@@ -10,9 +10,9 @@ namespace Dominio
         public string Ciudad { get; set; }
         public string Estado { get; set; }
         public string Pais { get; set; }
-        /*//Navigation Properties
+        //Navigation Properties
         public int PaqueteId { get; set; }
-        public Paquete Paquete { get; set; }*/
+        public Paquete Paquete { get; set; }
 
         public Lugar() { }
         public Lugar(string ciudad, string estado, string pais)

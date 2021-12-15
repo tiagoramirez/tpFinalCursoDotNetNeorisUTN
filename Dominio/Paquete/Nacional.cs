@@ -4,7 +4,7 @@ namespace Dominio
 {
     public class Nacional : Paquete,IPago
     {
-        public Nacional(){  }
+        public Nacional():base() {  }
         public override void CargarPaquete()
         {
             base.CargarPaquete();

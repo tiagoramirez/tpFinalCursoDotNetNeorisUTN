@@ -16,8 +16,13 @@ namespace Dominio
         public int CantidadDeCuotas { get; set; }
         public double ValorPorCuota { get; set; }
         //Navigation Properties
-        public List<Lugar> ListaLugares { get; set; }=new List<Lugar>();
+        public IList<Lugar> ListaLugares { get; set; }
 
+
+        public Paquete()
+        {
+            ListaLugares = new List<Lugar>();
+        }
 
         public virtual void CargarPaquete()
         {
