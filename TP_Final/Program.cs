@@ -15,7 +15,7 @@ namespace TP_Final
                 
                 switch (opc)
                 {
-                    case '1':
+                    case '1'://crear cliente
                         {
                             var opcCase1 = Menus.MenuCrearCliente();
                             if (opcCase1 == '1')
@@ -32,7 +32,7 @@ namespace TP_Final
                             }
                         }
                         break;
-                    case '2':
+                    case '2'://crear paquete
                         var opcCase2 = Menus.MenuCrearPaquete();
                         if (opcCase2 == '1')
                         {
@@ -50,7 +50,7 @@ namespace TP_Final
                             ControladorPaquete.AgregarBd(nuevoPaquete);
                         }
                         break;
-                    case '3':
+                    case '3'://mostrar paquetes
                         var paquetes=ControladorPaquete.ObtenerPaquetes();
                         foreach (var paquete in paquetes)
                         {

@@ -12,10 +12,11 @@ namespace Dominio
         public double Precio { get; set; }
         public int CantidadDiasTotales { get; set; }
         public DateTime FechaDeViaje { get; set; }
-        public List<Lugar> ListaLugares { get; set; } = new List<Lugar>();
         public bool Vigente { get; set; }
         public int CantidadDeCuotas { get; set; }
         public double ValorPorCuota { get; set; }
+        //Navigation Properties
+        public List<Lugar> ListaLugares { get; set; }=new List<Lugar>();
 
 
         public virtual void CargarPaquete()
