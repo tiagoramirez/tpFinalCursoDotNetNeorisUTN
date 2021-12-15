@@ -58,6 +58,7 @@ namespace TP_Final
                        
                         break;
                     case '4':
+                        ControladorPaquete.ActualisarPrecioPaquete("testp", 0);
                         break;
                     case '5':
                         break;

@@ -42,6 +42,31 @@ namespace Controlador
 
             return paquetes;
         }
+        public static bool ActualisarPrecioPaquete(string nombrePaquete,int precio)
+        {
+            try {
+                using (var context = new TPContext())
+                {
+                    var result = context.Paquetes.SingleOrDefault(b => b.Nombre == nombrePaquete);
+                    if (result != null)
+                    {
+                        result.Precio = precio;
+                        context.SaveChanges();
+                        return true;
+                    }                 
+                    return false;
+                    
+                }
+            }
+             
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+                Console.WriteLine($"Error!!!! \n {e.InnerException}");
+                return false;
+            }
+
+}
 
     }
 }
