@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Controlador;
+using System;
 
 namespace TP_Final
 {
@@ -37,24 +38,24 @@ namespace TP_Final
                         {
                             var nuevoPaquete = new Nacional();
                             nuevoPaquete.CargarPaquete();
-                            foreach (var elem in nuevoPaquete.ListaLugares)
-                            {
-                                ControladorLugar.AgregarBd(elem);
-                            }
+                            Console.Clear();
+                            nuevoPaquete.MostrarPaquete();
+                            Console.ReadKey();
                             ControladorPaquete.AgregarBd(nuevoPaquete);
                         }
                         else
                         {
                             var nuevoPaquete = new Internacional();
                             nuevoPaquete.CargarPaquete();
-                            foreach (var elem in nuevoPaquete.ListaLugares)
-                            {
-                                ControladorLugar.AgregarBd(elem);
-                            }
                             ControladorPaquete.AgregarBd(nuevoPaquete);
                         }
                         break;
                     case '3':
+                        var paquetes=ControladorPaquete.ObtenerPaquetes();
+                        foreach (var paquete in paquetes)
+                        {
+                            paquete.MostrarPaquete();
+                        }
                         break;
                     case '4':
                         break;

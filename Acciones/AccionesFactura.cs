@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Dominio;
 using Controlador;
 
@@ -46,3 +46,4 @@ namespace Acciones
         }
     }
 }
+*/

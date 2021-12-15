@@ -1,21 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dominio
 {
     public class Nacional : Paquete,IPago
     {
-        private int cantidadDeCuotas;
-        public int CantidadDeCuotas { get; set; }
-        public double ValorPorCuota { get; set; }
-
         public Nacional(){  }
         public override void CargarPaquete()
         {
             base.CargarPaquete();
+
+            int cantidad = IngresaCantidadLugares();
+            Console.Clear();
+            for (int i = 0; i < cantidad; i++)
+            {
+                Console.WriteLine($"{i + 1}/{cantidad}");
+                Lugar lugar = IngresarLugar();
+                ListaLugares.Add(lugar);
+            }
 
             Console.Write("Ingresa el porcentaje de impuesto: ");
             var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
@@ -33,7 +34,7 @@ namespace Dominio
         {
             if (porcentaje > 0)
             {
-                Precio = (Precio * porcentaje) + Precio;
+                Precio = (Precio * (porcentaje/100)) + Precio;
                 return true;
             }
             return false;
@@ -42,13 +43,14 @@ namespace Dominio
         public void CargarPago()
         {
             Console.Write("Ingresa la cantidad de cuotas (1, 3, 6, 12): ");
-            var esInt = int.TryParse(Console.ReadLine(), out cantidadDeCuotas);
+            var esInt = int.TryParse(Console.ReadLine(), out int cantidadDeCuotas);
             while (!esInt || (cantidadDeCuotas != 1 && cantidadDeCuotas != 3 && cantidadDeCuotas != 6 && cantidadDeCuotas != 12))
             {
                 Console.Write("No ingresaste una opcion valida. Vuelve a ingresar la cantidad de cuotas: ");
                 esInt = int.TryParse(Console.ReadLine(), out cantidadDeCuotas);
             }
             ValorPorCuota = Precio / cantidadDeCuotas;
+            CantidadDeCuotas = cantidadDeCuotas;
             Console.Clear();
         }
 
@@ -58,6 +60,19 @@ namespace Dominio
             Console.WriteLine($"Precio en pesos: ${Precio}");
             Console.WriteLine($"Cantidad de cuotas del pago: {CantidadDeCuotas}");
             Console.WriteLine($"Valor por cuota: ${ValorPorCuota}");
+        }
+
+        public Lugar IngresarLugar()
+        {
+            Console.Write("Ingrese estado el cual va a visitar: ");
+            string estado = Console.ReadLine();
+            Console.Clear();
+
+            Console.Write("Ingrese la ciudad: ");
+            string ciudad = Console.ReadLine();
+            Console.Clear();
+
+            return new Lugar(ciudad,estado,"Argentina");
         }
     }
 }
