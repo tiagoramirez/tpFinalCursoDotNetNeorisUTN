@@ -20,6 +20,7 @@ namespace Controlador
             catch (Exception e)
             {
                 Console.WriteLine($"Error!!!! \n {e.Message}");
+                Console.WriteLine($"Error!!!! \n {e.InnerException}");
             }
         }
 
@@ -30,12 +31,13 @@ namespace Controlador
             {
                 using (var context = new TPContext())
                 {
-                    paquetes = context.Paquetes.ToList();
+                    paquetes = context.Paquetes.Include("ListaLugares").ToList();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error!!!! \n {e.Message}");
+                Console.WriteLine($"Error!!!! \n {e.InnerException}");
             }
 
             return paquetes;

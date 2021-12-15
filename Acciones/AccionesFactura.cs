@@ -13,7 +13,7 @@ namespace Acciones
 
             if (existe)
             {
-                Console.Write("Ingresa un Id de Paquete: ");
+                Console.Write("Ingresa un IdLugar de Paquete: ");
                 //Falta el controlador de paquete
             }
             int idPaquete = 0;//esto hay que sacarlo!

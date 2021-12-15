@@ -49,10 +49,13 @@ namespace TP_Final
                         break;
                     case '3'://mostrar paquetes
                         var paquetes=ControladorPaquete.ObtenerPaquetes();
-                        foreach (var paquete in paquetes)
-                        {
-                            paquete.MostrarPaquete();
+                        if (paquetes != null) {
+                            foreach (var paquete in paquetes)
+                            {
+                                paquete.MostrarPaquete();
+                            }
                         }
+                       
                         break;
                     case '4':
                         break;

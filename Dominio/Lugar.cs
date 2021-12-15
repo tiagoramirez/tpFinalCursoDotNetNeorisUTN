@@ -1,19 +1,31 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Dominio
 {
     public class Lugar
     {
         [Key]
-        public int Id { get; set; }
+        public int IdLugar  { get; set; }
+
+
+        
+        public int IdPaquete { get; set; }
+        [ForeignKey("IdPaquete")]
+        public   Paquete Paquete { get; set; }
+
+        
         public string Ciudad { get; set; }
         public string Estado { get; set; }
         public string Pais { get; set; }
         //Navigation Properties
-        public int PaqueteId { get; set; }
+       /* public int PaqueteId { get; set; }
         public Paquete Paquete { get; set; }
-
+       */
         public Lugar() { }
         public Lugar(string ciudad, string estado, string pais)
         {
