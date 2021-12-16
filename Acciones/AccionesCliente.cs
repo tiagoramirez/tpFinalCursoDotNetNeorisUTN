@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Controlador;
+using System;
 
 namespace Acciones
 {
@@ -19,5 +20,20 @@ namespace Acciones
             ControladorCliente.AgregarBd(nuevoCliente);
         }
 
+        public static void MostrarTodosLosClientes()
+        {
+            var clientes = ControladorCliente.ObtenerClientes();
+            if (clientes != null)
+            {
+                foreach (var cliente in clientes)
+                {
+                    cliente.MostrarCliente();
+                    Console.WriteLine("\n--------------------------------------\n");
+                }
+            }
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 }

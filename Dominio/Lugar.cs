@@ -51,9 +51,7 @@ namespace Dominio
         
         public void MostrarLugar()
         {
-            Console.WriteLine($"Ciudad: {Ciudad}");
-            Console.WriteLine($"Estado: {Estado}");
-            Console.WriteLine($"Pais: {Pais}");
+            Console.WriteLine($"{Ciudad}, {Estado}, {Pais}");
         }
     }
 }

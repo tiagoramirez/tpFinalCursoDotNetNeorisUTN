@@ -53,7 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menus.cs" />
+    <Compile Include="Menus\MenusPrincipal.cs" />
+    <Compile Include="Menus\MenusCliente.cs" />
+    <Compile Include="Menus\MenusPaquete.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

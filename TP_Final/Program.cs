@@ -12,15 +12,18 @@ namespace TP_Final
             var terminar = false;
             while (!terminar)
             {
-                var opcMenuPrincipal = Menus.MenuPrincipal();
+                var opcMenuPrincipal = MenusPrincipal.MenuPrincipal();
                 
                 switch (opcMenuPrincipal)
                 {
                     case '1'://Menu Cliente
-                        var opcCliente=Menus.MenuOpcionesCliente();
+                        var opcCliente= MenusPrincipal.MenuOpcionesCliente();
                         switch (opcCliente)
                         {
-                            case '1':Menus.MenuCrearCliente();
+                            case '1':MenusCliente.MenuCrearCliente();
+                                break;
+
+                            case '2':AccionesCliente.MostrarTodosLosClientes();
                                 break;
 
                             case (char)27:Console.Clear();
@@ -29,10 +32,10 @@ namespace TP_Final
                     break;
 
                     case '2'://Menu Paquete
-                        var opcPaquete=Menus.MenuOpcionesPaquete();
+                        var opcPaquete= MenusPrincipal.MenuOpcionesPaquete();
                         switch (opcPaquete)
                         {
-                            case '1':Menus.MenuCrearPaquete();
+                            case '1':MenusPaquete.MenuCrearPaquete();
                                 break;
 
                             case '2':AccionesPaquete.MostrarTodosLosPaquetes();

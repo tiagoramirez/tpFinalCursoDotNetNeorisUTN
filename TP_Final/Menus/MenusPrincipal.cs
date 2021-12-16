@@ -1,9 +1,8 @@
 ﻿using System;
-using Acciones;
 
 namespace TP_Final
 {
-    public static class Menus
+    public static class MenusPrincipal
     {
         public static char MenuPrincipal()
         {
@@ -63,49 +62,5 @@ namespace TP_Final
             Console.Clear();
             return opc.KeyChar;
         }
-
-        public static void MenuCrearCliente()
-        {
-            Console.WriteLine("1: Cliente Particular");
-            Console.WriteLine("2: Cliente Corporativo");
-
-            var opc = Console.ReadKey(true);
-            while (opc.KeyChar < '1' || opc.KeyChar > '2')
-            {
-                opc = Console.ReadKey(true);
-            }
-            Console.Clear();
-            if (opc.KeyChar == '1')
-            {
-                AccionesCliente.CrearClienteParticularYSubirBd();
-            }
-            else
-            {
-                AccionesCliente.CrearClienteCorporativoYSubirBd();
-            }
-        }
-
-        public static void MenuCrearPaquete()
-        {
-            Console.WriteLine("1: Paquete Nacional");
-            Console.WriteLine("2: Paquete Internacional");
-
-            var opc = Console.ReadKey(true);
-            while (opc.KeyChar < '1' || opc.KeyChar > '2')
-            {
-                opc = Console.ReadKey(true);
-            }
-            Console.Clear();
-
-            if (opc.KeyChar == '1')
-            {
-                AccionesPaquete.CrearPaqueteNacionalYSubirBd();
-            }
-            else
-            {
-                AccionesPaquete.CrearPaqueteInternacionalYSubirBd();
-            }
-        }
-        
     }
 }

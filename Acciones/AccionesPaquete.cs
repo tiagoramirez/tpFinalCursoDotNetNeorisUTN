@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Controlador;
+using System;
 
 namespace Acciones
 {
@@ -26,8 +27,12 @@ namespace Acciones
                 foreach (var paquete in paquetes)
                 {
                     paquete.MostrarPaquete();
+                    Console.WriteLine("\n--------------------------------------\n");
                 }
             }
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 }

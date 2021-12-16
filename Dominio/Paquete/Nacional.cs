@@ -66,11 +66,9 @@ namespace Dominio
         {
             Console.Write("Ingrese estado el cual va a visitar: ");
             string estado = Console.ReadLine();
-            Console.Clear();
 
             Console.Write("Ingrese la ciudad: ");
             string ciudad = Console.ReadLine();
-            Console.Clear();
 
             return new Lugar(ciudad,estado,"Argentina");
         }

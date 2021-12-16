@@ -32,6 +32,7 @@ namespace Dominio
                 Lugar lugar = IngresarLugar();
                 ListaLugares.Add(lugar);
             }
+            Console.Clear();
 
             Console.Write("El paquete requiere visa: ");
             Console.WriteLine("1: SI");
@@ -47,6 +48,15 @@ namespace Dominio
                 RequiereVisa = false;
             Console.Clear();
 
+            Console.Write("Ingresa el monto fijo de impuesto: ");
+            var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
+            while (!esDouble2 || !SetImpuestoFijo(impuesto))
+            {
+                Console.Write("No se ingreso un numero decimal. Vuelve a ingresar un numero: ");
+                esDouble2 = Double.TryParse(Console.ReadLine(), out impuesto);
+            }
+            Console.Clear();
+
             Console.Write("Ingrese la cotizacion del dolar: ");
             var esDouble = Double.TryParse(Console.ReadLine(), out double cotizacionDolar);
             while (!esDouble)
@@ -57,15 +67,6 @@ namespace Dominio
             Console.Clear();
             CotizacionDolar = cotizacionDolar;
             Precio /= cotizacionDolar;
-
-            Console.Write("Ingresa el monto fijo de impuesto: ");
-            var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
-            while (!esDouble2 || !SetImpuestoFijo(impuesto))
-            {
-                Console.Write("No se ingreso un numero decimal. Vuelve a ingresar un numero: ");
-                esDouble2 = Double.TryParse(Console.ReadLine(), out impuesto);
-            }
-            Console.Clear();
 
             CargarPago();
         }
