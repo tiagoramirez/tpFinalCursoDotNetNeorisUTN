@@ -67,6 +67,30 @@ namespace Controlador
             }
 
 }
+        public static bool cambiarEstadoPaquete(string nombrePaquete, bool  estado)
+        {
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    var result = context.Paquetes.SingleOrDefault(b => b.Nombre == nombrePaquete);
+                    if (result != null && result.Vigente!=estado)
+                    {
+                        result.Vigente = estado;
+                        context.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+            }
 
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+                Console.WriteLine($"Error!!!! \n {e.InnerException}");
+                return false;
+            }
+
+        }
     }
 }
