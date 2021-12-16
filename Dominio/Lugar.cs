@@ -30,21 +30,6 @@ namespace Dominio
             this.Estado=estado;
             this.Pais=pais;
         }
-
-        public void IngresarLugar()
-        {
-            Console.Write("Ingrese pais el cual va a visitar: ");
-            Estado = Console.ReadLine();
-            Console.Clear();
-
-            Console.Write("Ingrese estado el cual va a visitar: ");
-            Estado = Console.ReadLine();
-            Console.Clear();
-
-            Console.Write("Ingrese la Ciudad: ");
-            Ciudad = Console.ReadLine();
-            Console.Clear();
-        }
         
         public void MostrarLugar()
         {

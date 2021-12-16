@@ -8,9 +8,25 @@ namespace Dominio
         public override void CargarPaquete()
         {
             base.CargarPaquete();
+            IngresarLugares();
+            CargarImpuestoAPrecio();
+            CargarPago();
+        }
 
+        private Lugar IngresarLugar()
+        {
+            Console.Write("Ingrese estado el cual va a visitar: ");
+            string estado = Console.ReadLine();
+
+            Console.Write("Ingrese la ciudad: ");
+            string ciudad = Console.ReadLine();
+
+            return new Lugar(ciudad, estado, "Argentina");
+        }
+
+        private void IngresarLugares()
+        {
             int cantidad = IngresaCantidadLugares();
-            Console.Clear();
             for (int i = 0; i < cantidad; i++)
             {
                 Console.WriteLine($"{i + 1}/{cantidad}");
@@ -18,7 +34,20 @@ namespace Dominio
                 ListaLugares.Add(lugar);
             }
             Console.Clear();
+        }
 
+        private bool SetImpuestoPorcentaje(double porcentaje)
+        {
+            if (porcentaje > 0)
+            {
+                Precio = (Precio * (porcentaje/100)) + Precio;
+                return true;
+            }
+            return false;
+        }
+
+        private void CargarImpuestoAPrecio()
+        {
             Console.Write("Ingresa el porcentaje de impuesto: ");
             var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
             while (!esDouble2 || !SetImpuestoPorcentaje(impuesto))
@@ -27,18 +56,6 @@ namespace Dominio
                 esDouble2 = Double.TryParse(Console.ReadLine(), out impuesto);
             }
             Console.Clear();
-
-            CargarPago();
-        }
-
-        public bool SetImpuestoPorcentaje(double porcentaje)
-        {
-            if (porcentaje > 0)
-            {
-                Precio = (Precio * (porcentaje/100)) + Precio;
-                return true;
-            }
-            return false;
         }
 
         public void CargarPago()
@@ -61,17 +78,6 @@ namespace Dominio
             Console.WriteLine($"Precio en pesos: ${Precio}");
             Console.WriteLine($"Cantidad de cuotas del pago: {CantidadDeCuotas}");
             Console.WriteLine($"Valor por cuota: ${ValorPorCuota}");
-        }
-
-        public Lugar IngresarLugar()
-        {
-            Console.Write("Ingrese estado el cual va a visitar: ");
-            string estado = Console.ReadLine();
-
-            Console.Write("Ingrese la ciudad: ");
-            string ciudad = Console.ReadLine();
-
-            return new Lugar(ciudad,estado,"Argentina");
         }
     }
 }

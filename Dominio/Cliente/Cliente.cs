@@ -18,33 +18,33 @@ namespace Dominio
 
         public virtual void CargarCliente()
         {
+            IngresarDni();
+            IngresarNacionalidad();
+            IngresarProvincia();
+            IngresarDireccion();
+            IngresarTelefono();
+        }
+
+        private void IngresarDni()
+        {
+            Console.Write("Ingresar D.N.I. del viajante: ");
+            var dniString = Console.ReadLine();
+            var esInt = int.TryParse(dniString, out int dni);
+            while (!esInt || dniString.Length != 8)
+            {
+                Console.WriteLine("D.N.I. incorrecto!");
+                Console.Write("Vuelve a ingresar el D.N.I. del viajante: ");
+                dniString = Console.ReadLine();
+                esInt = int.TryParse(dniString, out dni);
+            }
+            this.Dni = dni;
+        }
+
+        private void IngresarNacionalidad()
+        {
             Console.Write("Ingresa nacionalidad: ");
             this.Nacionalidad = Console.ReadLine();
             Console.Clear();
-            IngresarProvincia();
-            Console.Clear();
-            Console.Write("Ingresa direccion: ");
-            this.Direccion = Console.ReadLine();
-            Console.Clear();
-            Console.Write("Ingresa telefono: ");
-            this.Telefono = Console.ReadLine();
-            Console.Clear();
-            IngresarDni();
-        }
-
-        public virtual void MostrarCliente()
-        {
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"Nacionalidad: {Nacionalidad}");
-            Console.WriteLine($"Provincia: {Provincia}");
-            Console.WriteLine($"Direccion: {Direccion}");
-            Console.WriteLine($"Telefono: {Telefono}");
-        }
-
-        private void IngresarProvincia()
-        {
-            var opc = MostrarProvinciasEIngresarOpcion();
-            SetProvincia(opc);
         }
 
         private int MostrarProvinciasEIngresarOpcion()
@@ -165,19 +165,34 @@ namespace Dominio
             }
         }
 
-        private void IngresarDni()
+        private void IngresarProvincia()
         {
-            Console.Write("Ingresar D.N.I. del viajante: ");
-            var dniString = Console.ReadLine();
-            var esInt = int.TryParse(dniString, out int dni);
-            while (!esInt || dniString.Length != 8)
-            {
-                Console.WriteLine("D.N.I. incorrecto!");
-                Console.Write("Vuelve a ingresar el D.N.I. del viajante: ");
-                dniString = Console.ReadLine();
-                esInt = int.TryParse(dniString, out dni);
-            }
-            this.Dni = dni;
+            var opc = MostrarProvinciasEIngresarOpcion();
+            SetProvincia(opc);
+            Console.Clear();
+        }
+
+        private void IngresarDireccion()
+        {
+            Console.Write("Ingresa direccion: ");
+            this.Direccion = Console.ReadLine();
+            Console.Clear();
+        }
+
+        private void IngresarTelefono()
+        {
+            Console.Write("Ingresa telefono: ");
+            this.Telefono = Console.ReadLine();
+            Console.Clear();
+        }
+
+        public virtual void MostrarCliente()
+        {
+            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"Nacionalidad: {Nacionalidad}");
+            Console.WriteLine($"Provincia: {Provincia}");
+            Console.WriteLine($"Direccion: {Direccion}");
+            Console.WriteLine($"Telefono: {Telefono}");
         }
     }
 }

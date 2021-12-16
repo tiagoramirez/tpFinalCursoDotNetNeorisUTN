@@ -10,22 +10,33 @@ namespace Dominio
         public Internacional() : base()
         {   }
 
-        public bool SetImpuestoFijo(double impuesto)
-        {
-            if (impuesto > 0)
-            {
-                Precio += impuesto;
-                return true;
-            }
-            return false;
-        }
-
         public override void CargarPaquete()
         {
             base.CargarPaquete();
+            IngresarLugares();
+            IngresarRequiereVisa();
+            CargarImpuestoAPrecio();
+            IngresarCotizacionDolar();
+            CargarPago();
+        }
 
+        public Lugar IngresarLugar()
+        {
+            Console.Write("Ingrese pais el cual va a visitar: ");
+            string pais = Console.ReadLine();
+
+            Console.Write("Ingrese estado el cual va a visitar: ");
+            string estado = Console.ReadLine();
+
+            Console.Write("Ingrese la ciudad: ");
+            string ciudad = Console.ReadLine();
+
+            return new Lugar(ciudad, estado, pais);
+        }
+
+        private void IngresarLugares()
+        {
             int cantidad = IngresaCantidadLugares();
-            Console.Clear();
             for (int i = 0; i < cantidad; i++)
             {
                 Console.WriteLine($"{i + 1}/{cantidad}");
@@ -33,7 +44,10 @@ namespace Dominio
                 ListaLugares.Add(lugar);
             }
             Console.Clear();
+        }
 
+        private void IngresarRequiereVisa()
+        {
             Console.WriteLine("El paquete requiere visa?");
             Console.WriteLine("1: SI");
             Console.WriteLine("2: NO");
@@ -47,7 +61,20 @@ namespace Dominio
             else
                 RequiereVisa = false;
             Console.Clear();
+        }
 
+        private bool SetImpuestoFijo(double impuesto)
+        {
+            if (impuesto > 0)
+            {
+                Precio += impuesto;
+                return true;
+            }
+            return false;
+        }
+
+        private void CargarImpuestoAPrecio()
+        {
             Console.Write("Ingresa el monto fijo de impuesto: ");
             var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
             while (!esDouble2 || !SetImpuestoFijo(impuesto))
@@ -56,7 +83,10 @@ namespace Dominio
                 esDouble2 = Double.TryParse(Console.ReadLine(), out impuesto);
             }
             Console.Clear();
+        }
 
+        private void IngresarCotizacionDolar()
+        {
             Console.Write("Ingrese la cotizacion del dolar: ");
             var esDouble = Double.TryParse(Console.ReadLine(), out double cotizacionDolar);
             while (!esDouble)
@@ -67,8 +97,6 @@ namespace Dominio
             Console.Clear();
             CotizacionDolar = cotizacionDolar;
             Precio /= cotizacionDolar;
-
-            CargarPago();
         }
 
         public void CargarPago()
@@ -92,20 +120,6 @@ namespace Dominio
             Console.WriteLine($"Precio en dolares: U$D{Precio}");
             Console.WriteLine($"Cantidad de cuotas del pago: {CantidadDeCuotas}");
             Console.WriteLine($"Valor por cuota: U$D{ValorPorCuota}");
-        }
-
-        public Lugar IngresarLugar()
-        {
-            Console.Write("Ingrese pais el cual va a visitar: ");
-            string pais = Console.ReadLine();
-
-            Console.Write("Ingrese estado el cual va a visitar: ");
-            string estado = Console.ReadLine();
-
-            Console.Write("Ingrese la ciudad: ");
-            string ciudad = Console.ReadLine();
-
-            return new Lugar(ciudad,estado,pais);
         }
     }
 }

@@ -12,13 +12,22 @@ namespace Dominio
 
         public override void CargarCliente()
         {
+            IngresarNombre();
+            IngresarApellido();
             base.CargarCliente();
-            Console.Clear();
-            Console.Write("Ingresa apellido: ");
-            this.Apellido = Console.ReadLine();
-            Console.Clear();
+        }
+
+        private void IngresarNombre()
+        {
             Console.Write("Ingresa nombre: ");
             this.Nombre = Console.ReadLine();
+            Console.Clear();
+        }
+
+        private void IngresarApellido()
+        {
+            Console.Write("Ingresa apellido: ");
+            this.Apellido = Console.ReadLine();
             Console.Clear();
         }
 

@@ -19,7 +19,6 @@ namespace Dominio
         //Navigation Properties
         public List<Lugar> ListaLugares { get; set; }
 
-
         public Paquete()
         {
             ListaLugares = new List<Lugar>();
@@ -27,23 +26,21 @@ namespace Dominio
 
         public virtual void CargarPaquete()
         {
-            Console.Write("Ingresar el nombre del paquete: ");
-            Nombre = Console.ReadLine();
-            Console.Clear();
-
-            IngresaPrecioBase();
-            Console.Clear();
-
+            IngresarNombre();
+            IngresaPrecio();
             IngresarFechaViaje();
-            Console.Clear();
-
             IngresaCantidadDiasTotales();
-            Console.Clear();
-
             Vigente = true;
         }
 
-        private void IngresaPrecioBase()
+        private void IngresarNombre()
+        {
+            Console.Write("Ingresar el nombre del paquete: ");
+            Nombre = Console.ReadLine();
+            Console.Clear();
+        }
+
+        private void IngresaPrecio()
         {
             double precio;
             Console.Write("Ingresar el precio base del paquete en pesos: ");
@@ -54,32 +51,7 @@ namespace Dominio
                 esDouble = Double.TryParse(Console.ReadLine(), out precio);
             }
             Precio= precio;
-        }
-
-        private void IngresaCantidadDiasTotales()
-        {
-            int cantidadDiasTotales;
-            Console.Write("Ingrese la cantidad de dias totales: ");
-            var esInt = int.TryParse(Console.ReadLine(), out cantidadDiasTotales);
-            while (!esInt)
-            {
-                Console.WriteLine("No ingresaste un numero. Vuelve a ingresar un numero: ");
-                esInt = int.TryParse(Console.ReadLine(), out cantidadDiasTotales);
-            }
-            CantidadDiasTotales = cantidadDiasTotales;
-            FechaDeRegreso = FechaDeViaje.AddDays(CantidadDiasTotales);
-        }
-
-        protected int IngresaCantidadLugares()
-        {
-            Console.Write("Ingrese la cantidad de lugares a los que viaja en este paquete (maximo 10): ");
-            var esInt = int.TryParse(Console.ReadLine(), out int cantidad);
-            while (!esInt || cantidad > 10)
-            {
-                Console.WriteLine("No ingresaste un numero o el ingresado es mayor a 10. Vuelve a ingresar un numero: ");
-                esInt = int.TryParse(Console.ReadLine(), out cantidad);
-            }
-            return cantidad;
+            Console.Clear();
         }
 
         private void IngresarFechaViaje()
@@ -124,8 +96,23 @@ namespace Dominio
                     Console.WriteLine("La fecha ingresada no existe. Vuelva a ingresar los datos!");
                 }
             }
+            Console.Clear();
         }
-            
+
+        private void IngresaCantidadDiasTotales()
+        {
+            int cantidadDiasTotales;
+            Console.Write("Ingrese la cantidad de dias totales: ");
+            var esInt = int.TryParse(Console.ReadLine(), out cantidadDiasTotales);
+            while (!esInt)
+            {
+                Console.WriteLine("No ingresaste un numero. Vuelve a ingresar un numero: ");
+                esInt = int.TryParse(Console.ReadLine(), out cantidadDiasTotales);
+            }
+            CantidadDiasTotales = cantidadDiasTotales;
+            FechaDeRegreso = FechaDeViaje.AddDays(CantidadDiasTotales);
+            Console.Clear();
+        }
 
         public virtual void MostrarPaquete()
         {
@@ -140,6 +127,19 @@ namespace Dominio
             Console.WriteLine($"Fecha de regreso: {FechaDeRegreso}");
             Console.WriteLine($"Cantidad de dias totales de viaje: {CantidadDiasTotales}");
             Console.WriteLine($"Vigente: {Vigente}");
+        }
+
+        protected int IngresaCantidadLugares()
+        {
+            Console.Write("Ingrese la cantidad de lugares a los que viaja en este paquete (maximo 10): ");
+            var esInt = int.TryParse(Console.ReadLine(), out int cantidad);
+            while (!esInt || cantidad > 10)
+            {
+                Console.WriteLine("No ingresaste un numero o el ingresado es mayor a 10. Vuelve a ingresar un numero: ");
+                esInt = int.TryParse(Console.ReadLine(), out cantidad);
+            }
+            Console.Clear();
+            return cantidad;
         }
     }
 }

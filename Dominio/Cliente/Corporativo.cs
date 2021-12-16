@@ -11,22 +11,18 @@ namespace Dominio
         {   }
 
         public override void CargarCliente()
-        { 
+        {
             base.CargarCliente();
+            IngresarRazonSocial();
+            IngresarCuit();
+        }
+
+        private void IngresarRazonSocial()
+        {
             Console.Write("Ingresar razon social: ");
             this.RazonSocial = Console.ReadLine();
             Console.Clear();
-            IngresarCuit();
-            Console.Clear();
         }
-
-        public override void MostrarCliente()
-        {
-            base.MostrarCliente();
-            Console.WriteLine($"Razon social: {RazonSocial}");
-            Console.WriteLine($"C.U.I.T.: {Cuit}");
-        }
-
         private void IngresarCuit()
         {
             Console.Write("Ingresar C.U.I.T.: ");
@@ -40,6 +36,15 @@ namespace Dominio
                 esLong = long.TryParse(cuitString, out cuit);
             }
             this.Cuit = cuit;
+            Console.Clear();
         }
+
+        public override void MostrarCliente()
+        {
+            base.MostrarCliente();
+            Console.WriteLine($"Razon social: {RazonSocial}");
+            Console.WriteLine($"C.U.I.T.: {Cuit}");
+        }
+
     }
 }
