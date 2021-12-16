@@ -12,6 +12,7 @@ namespace Dominio
         public double Precio { get; set; }
         public int CantidadDiasTotales { get; set; }
         public DateTime FechaDeViaje { get; set; }
+        public DateTime FechaDeRegreso { get; set; }
         public bool Vigente { get; set; }
         public int CantidadDeCuotas { get; set; }
         public double ValorPorCuota { get; set; }
@@ -66,6 +67,7 @@ namespace Dominio
                 esInt = int.TryParse(Console.ReadLine(), out cantidadDiasTotales);
             }
             CantidadDiasTotales = cantidadDiasTotales;
+            FechaDeRegreso = FechaDeViaje.AddDays(CantidadDiasTotales);
         }
 
         protected int IngresaCantidadLugares()
@@ -135,6 +137,7 @@ namespace Dominio
                 item.MostrarLugar();
             }
             Console.WriteLine($"Fecha de viaje: {FechaDeViaje}");
+            Console.WriteLine($"Fecha de regreso: {FechaDeRegreso}");
             Console.WriteLine($"Cantidad de dias totales de viaje: {CantidadDiasTotales}");
             Console.WriteLine($"Vigente: {Vigente}");
         }

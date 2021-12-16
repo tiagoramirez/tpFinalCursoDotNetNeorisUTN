@@ -34,7 +34,7 @@ namespace Dominio
             }
             Console.Clear();
 
-            Console.Write("El paquete requiere visa: ");
+            Console.WriteLine("El paquete requiere visa?");
             Console.WriteLine("1: SI");
             Console.WriteLine("2: NO");
             var opc = Console.ReadKey(true);
