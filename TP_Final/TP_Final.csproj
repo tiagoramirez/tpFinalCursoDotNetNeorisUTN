@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Acciones\Acciones.csproj">
+      <Project>{303d35b8-c9f5-40b9-9985-9fd6244ddf87}</Project>
+      <Name>Acciones</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Controlador\Controlador.csproj">
       <Project>{2c157a54-3694-4974-a038-3f6d3aecd55b}</Project>
       <Name>Controlador</Name>

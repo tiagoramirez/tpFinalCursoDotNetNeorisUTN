@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using Controlador;
 using System;
+using Acciones;
 
 namespace TP_Final
 {
@@ -11,58 +12,43 @@ namespace TP_Final
             var terminar = false;
             while (!terminar)
             {
-                var opc = Menus.MenuPrincipal();
+                var opcMenuPrincipal = Menus.MenuPrincipal();
                 
-                switch (opc)
+                switch (opcMenuPrincipal)
                 {
-                    case '1'://crear cliente
+                    case '1'://Menu Cliente
+                        var opcCliente=Menus.MenuOpcionesCliente();
+                        switch (opcCliente)
                         {
-                            var opcCase1 = Menus.MenuCrearCliente();
-                            if (opcCase1 == '1')
-                            {
-                                var nuevoCliente = new Particular();
-                                nuevoCliente.CargarCliente();
-                                ControladorCliente.AgregarBd(nuevoCliente);
-                            }
-                            else
-                            {
-                                var nuevoCliente = new Corporativo();
-                                nuevoCliente.CargarCliente();
-                                ControladorCliente.AgregarBd(nuevoCliente);
-                            }
+                            case '1':Menus.MenuCrearCliente();
+                                break;
+
+                            case (char)27:Console.Clear();
+                                break;
                         }
-                        break;
-                    case '2'://crear paquete
-                        var opcCase2 = Menus.MenuCrearPaquete();
-                        if (opcCase2 == '1')
+                    break;
+
+                    case '2'://Menu Paquete
+                        var opcPaquete=Menus.MenuOpcionesPaquete();
+                        switch (opcPaquete)
                         {
-                            var nuevoPaquete = new Nacional();
-                            nuevoPaquete.CargarPaquete();
-                            ControladorPaquete.AgregarBd(nuevoPaquete);
+                            case '1':Menus.MenuCrearPaquete();
+                                break;
+
+                            case '2':AccionesPaquete.MostrarTodosLosPaquetes();
+                                break;
+
+                            case (char)27:
+                                Console.Clear();
+                                break;
                         }
-                        else
-                        {
-                            var nuevoPaquete = new Internacional();
-                            nuevoPaquete.CargarPaquete();
-                            ControladorPaquete.AgregarBd(nuevoPaquete);
-                        }
+                    break;
+
+                    case '3'://Prueba
+                        ControladorPaquete.ActualisarPrecioPaquete("Patagonia", 100);
                         break;
-                    case '3'://mostrar paquetes
-                        var paquetes=ControladorPaquete.ObtenerPaquetes();
-                        if (paquetes != null) {
-                            foreach (var paquete in paquetes)
-                            {
-                                paquete.MostrarPaquete();
-                            }
-                        }
-                       
-                        break;
-                    case '4':
-                        ControladorPaquete.ActualisarPrecioPaquete("testp", 0);
-                        break;
-                    case '5':
-                        break;
-                    case '6':terminar = true;
+
+                    case (char)27:terminar = true;
                         break;
                 }
             }
