@@ -16,7 +16,7 @@ namespace Dominio
         public int CantidadDeCuotas { get; set; }
         public double ValorPorCuota { get; set; }
         //Navigation Properties
-        public IList<Lugar> ListaLugares { get; set; }
+        public List<Lugar> ListaLugares { get; set; }
 
 
         public Paquete()

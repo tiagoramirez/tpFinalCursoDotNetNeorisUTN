@@ -17,6 +17,7 @@ namespace Dominio
                 Lugar lugar = IngresarLugar();
                 ListaLugares.Add(lugar);
             }
+            Console.Clear();
 
             Console.Write("Ingresa el porcentaje de impuesto: ");
             var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
