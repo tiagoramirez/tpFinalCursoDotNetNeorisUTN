@@ -5,25 +5,24 @@ namespace TP_Final
 {
     internal class MenusCliente
     {
-        public static void MenuCrearCliente()
+        public static char OpcionesCliente()
         {
-            Console.WriteLine("1: Cliente Particular");
-            Console.WriteLine("2: Cliente Corporativo");
-
+            Console.WriteLine("1: Crear nuevo cliente");
+            Console.WriteLine("2: Mostrar todos los clientes");
+            Console.WriteLine("3: Buscar un cliente por ID");
+            Console.WriteLine("4: Buscar cliente por DNI");
+            Console.WriteLine("ESC: Volver");
             var opc = Console.ReadKey(true);
-            while (opc.KeyChar < '1' || opc.KeyChar > '2')
+            while (opc.KeyChar < '1' || opc.KeyChar > '4')
             {
+                if (opc.KeyChar == (char)27)
+                {
+                    return opc.KeyChar;
+                }
                 opc = Console.ReadKey(true);
             }
             Console.Clear();
-            if (opc.KeyChar == '1')
-            {
-                AccionesCliente.CrearClienteParticularYSubirBd();
-            }
-            else
-            {
-                AccionesCliente.CrearClienteCorporativoYSubirBd();
-            }
+            return opc.KeyChar;
         }
     }
 }

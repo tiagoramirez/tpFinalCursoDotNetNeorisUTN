@@ -42,55 +42,64 @@ namespace Controlador
 
             return paquetes;
         }
-        public static bool ActualisarPrecioPaquete(string nombrePaquete,int precio)
+
+        public static bool ActualizarPrecioPaquete(int idPaquete,double precioNuevo)
         {
             try {
                 using (var context = new TPContext())
                 {
-                    var result = context.Paquetes.SingleOrDefault(b => b.Nombre == nombrePaquete);
+                    var result = context.Paquetes.SingleOrDefault(b => b.Id==idPaquete);
                     if (result != null)
                     {
-                        result.Precio = precio;
+                        result.Precio = precioNuevo;
                         context.SaveChanges();
                         return true;
-                    }                 
+                    }
+                    Console.WriteLine($"Paquete {idPaquete} no encontrado.");
                     return false;
-                    
                 }
             }
-             
             catch (Exception e)
             {
                 Console.WriteLine($"Error!!!! \n {e.Message}");
                 Console.WriteLine($"Error!!!! \n {e.InnerException}");
                 return false;
             }
+        }
 
-}
-        public static bool cambiarEstadoPaquete(string nombrePaquete, bool  estado)
+        public static bool ActualizarEstadoPaquete(int idPaquete)
         {
             try
             {
                 using (var context = new TPContext())
                 {
-                    var result = context.Paquetes.SingleOrDefault(b => b.Nombre == nombrePaquete);
-                    if (result != null && result.Vigente!=estado)
+                    var result = context.Paquetes.SingleOrDefault(b => b.Id == idPaquete);
+                    if (result != null)
                     {
-                        result.Vigente = estado;
+                        result.Vigente = !result.Vigente;
                         context.SaveChanges();
+                        if (result.Vigente)
+                        {
+                            Console.WriteLine($"El paquete {result.Id} fue activado");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"El paquete {result.Id} fue desactivado");
+                        }
+                        Console.Write("Presione una tecla para continuar...");
+                        Console.ReadKey(true);
                         return true;
                     }
+                    Console.WriteLine($"Paquete {idPaquete} no encontrado.");
                     return false;
                 }
             }
-
             catch (Exception e)
             {
                 Console.WriteLine($"Error!!!! \n {e.Message}");
                 Console.WriteLine($"Error!!!! \n {e.InnerException}");
                 return false;
             }
-
         }
     }
 }

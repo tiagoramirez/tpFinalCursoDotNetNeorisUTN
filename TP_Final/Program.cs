@@ -17,28 +17,15 @@ namespace TP_Final
                 switch (opcMenuPrincipal)
                 {
                     case '1'://Menu Cliente
-                        var opcCliente= MenusPrincipal.MenuOpcionesCliente();
+                        var opcCliente= MenusCliente.OpcionesCliente();
                         switch (opcCliente)
                         {
-                            case '1':MenusCliente.MenuCrearCliente();
+                            case '1':
+                                AccionesCliente.CrearCliente();
                                 break;
 
-                            case '2':AccionesCliente.MostrarTodosLosClientes();
-                                break;
-
-                            case (char)27:Console.Clear();
-                                break;
-                        }
-                    break;
-
-                    case '2'://Menu Paquete
-                        var opcPaquete= MenusPrincipal.MenuOpcionesPaquete();
-                        switch (opcPaquete)
-                        {
-                            case '1':MenusPaquete.MenuCrearPaquete();
-                                break;
-
-                            case '2':AccionesPaquete.MostrarTodosLosPaquetes();
+                            case '2':
+                                AccionesCliente.MostrarTodosLosClientes();
                                 break;
 
                             case (char)27:
@@ -47,11 +34,34 @@ namespace TP_Final
                         }
                     break;
 
-                    case '3'://Prueba
-                        ControladorPaquete.ActualisarPrecioPaquete("Patagonia", 100);
-                        break;
+                    case '2'://Menu Paquete
+                        var opcPaquete= MenusPaquete.OpcionesPaquete();
+                        switch (opcPaquete)
+                        {
+                            case '1':
+                                AccionesPaquete.CrearPaquete();
+                                break;
 
-                    case (char)27:terminar = true;
+                            case '2':
+                                AccionesPaquete.MostrarTodosLosPaquetes();
+                                break;
+
+                            case '4':
+                                AccionesPaquete.ActualizarPrecioPaquete();
+                                break;
+
+                            case '5':
+                                AccionesPaquete.ActualizarEstadoPaquete();
+                                break;
+
+                            case (char)27:
+                                Console.Clear();
+                                break;
+                        }
+                    break;
+
+                    case (char)27:
+                        terminar = true;
                         break;
                 }
             }

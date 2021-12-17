@@ -1,30 +1,30 @@
 ﻿using System;
 using Acciones;
+using Controlador;
 
 namespace TP_Final
 {
     public static class MenusPaquete
     {
-        public static void MenuCrearPaquete()
+        public static char OpcionesPaquete()
         {
-            Console.WriteLine("1: Paquete Nacional");
-            Console.WriteLine("2: Paquete Internacional");
-
+            Console.WriteLine("1: Crear nuevo paquete");
+            Console.WriteLine("2: Mostrar todos los paquetes");
+            Console.WriteLine("3: Buscar un paquete por ID");
+            Console.WriteLine("4: Actualizar precio");
+            Console.WriteLine("5: Activar/Desactivar un paquete");
+            Console.WriteLine("ESC: Volver");
             var opc = Console.ReadKey(true);
-            while (opc.KeyChar < '1' || opc.KeyChar > '2')
+            while (opc.KeyChar < '1' || opc.KeyChar > '5')
             {
+                if (opc.KeyChar == (char)27)
+                {
+                    return opc.KeyChar;
+                }
                 opc = Console.ReadKey(true);
             }
             Console.Clear();
-
-            if (opc.KeyChar == '1')
-            {
-                AccionesPaquete.CrearPaqueteNacionalYSubirBd();
-            }
-            else
-            {
-                AccionesPaquete.CrearPaqueteInternacionalYSubirBd();
-            }
+            return opc.KeyChar;
         }
     }
 }
