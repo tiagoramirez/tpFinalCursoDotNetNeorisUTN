@@ -8,10 +8,11 @@ namespace TP_Final
         {
             Console.WriteLine("1: Ingresar al menu de cliente");
             Console.WriteLine("2: Ingresar al menu de paquete");
+            Console.WriteLine("3: Ingresar al menu de factura");
             Console.WriteLine("ESC: Terminar programa");
 
             var opc = Console.ReadKey(true);
-            while ((opc.KeyChar < '1' || opc.KeyChar > '2'))
+            while ((opc.KeyChar < '1' || opc.KeyChar > '3'))
             {
                 if (opc.KeyChar == (char)27)
                 {

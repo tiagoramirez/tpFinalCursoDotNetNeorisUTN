@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dominio
@@ -6,13 +7,16 @@ namespace Dominio
     public abstract class Cliente
     {
         [Key]
-        public int Id { get; set; }
+        public int IdCliente { get; set; }
         public string Nacionalidad { get; set; }
         public string Provincia { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public int Dni { get; set; }
 
+        //Navigation Properties
+        public List<Factura> ListaFacturas { get; set; }
+        //End Navigation Properties
 
         public Cliente() { }
 
@@ -38,6 +42,7 @@ namespace Dominio
                 esInt = int.TryParse(dniString, out dni);
             }
             this.Dni = dni;
+            Console.Clear();
         }
 
         private void IngresarNacionalidad()
@@ -188,7 +193,7 @@ namespace Dominio
 
         public virtual void MostrarCliente()
         {
-            Console.WriteLine($"ID: {Id}");
+            Console.WriteLine($"ID: {IdCliente}");
             Console.WriteLine($"Nacionalidad: {Nacionalidad}");
             Console.WriteLine($"Provincia: {Provincia}");
             Console.WriteLine($"Direccion: {Direccion}");

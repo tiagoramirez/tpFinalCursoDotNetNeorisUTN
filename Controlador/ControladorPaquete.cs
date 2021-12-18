@@ -48,7 +48,7 @@ namespace Controlador
             try {
                 using (var context = new TPContext())
                 {
-                    var result = context.Paquetes.SingleOrDefault(b => b.Id==idPaquete);
+                    var result = context.Paquetes.SingleOrDefault(b => b.IdPaquete==idPaquete);
                     if (result != null)
                     {
                         result.Precio = precioNuevo;
@@ -73,18 +73,18 @@ namespace Controlador
             {
                 using (var context = new TPContext())
                 {
-                    var result = context.Paquetes.SingleOrDefault(b => b.Id == idPaquete);
+                    var result = context.Paquetes.SingleOrDefault(b => b.IdPaquete == idPaquete);
                     if (result != null)
                     {
                         result.Vigente = !result.Vigente;
                         context.SaveChanges();
                         if (result.Vigente)
                         {
-                            Console.WriteLine($"El paquete {result.Id} fue activado");
+                            Console.WriteLine($"El paquete {result.IdPaquete} fue activado");
                         }
                         else
                         {
-                            Console.WriteLine($"El paquete {result.Id} fue desactivado");
+                            Console.WriteLine($"El paquete {result.IdPaquete} fue desactivado");
                         }
                         Console.Write("Presione una tecla para continuar...");
                         Console.ReadKey(true);
@@ -100,6 +100,30 @@ namespace Controlador
                 Console.WriteLine($"Error!!!! \n {e.InnerException}");
                 return false;
             }
+        }
+
+        public static Paquete ObtenerPaqueteId(int idPaquete)
+        {
+            Paquete res=null;
+            try
+            {
+                using (var context = new TPContext())
+                {
+                    res = context.Paquetes.Find(idPaquete);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error!!!! \n {e.Message}");
+            }
+            if (res == null)
+            {
+                Console.WriteLine($"El paquete con ID {idPaquete} no fue encontrado.");
+                Console.Write("Ingrese una tecla para continuar...");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
+            return res;
         }
     }
 }

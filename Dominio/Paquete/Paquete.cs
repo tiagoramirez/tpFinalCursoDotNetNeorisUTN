@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
 {
     public abstract class Paquete
     {
         [Key]
-        public int Id { get; set; }
+        public int IdPaquete { get; set; }
         public string Nombre { get; set; }
         public double Precio { get; set; }
         public int CantidadDiasTotales { get; set; }
@@ -16,8 +17,11 @@ namespace Dominio
         public bool Vigente { get; set; }
         public int CantidadDeCuotas { get; set; }
         public double ValorPorCuota { get; set; }
+
         //Navigation Properties
         public List<Lugar> ListaLugares { get; set; }
+        public List<Factura> ListaFacturas { get; set; }
+        //End Navigation Properties
 
         public Paquete()
         {
@@ -116,7 +120,7 @@ namespace Dominio
 
         public virtual void MostrarPaquete()
         {
-            Console.WriteLine($"idPaquete: {Id}");
+            Console.WriteLine($"idPaquete: {IdPaquete}");
             Console.WriteLine($"Nombre: {Nombre}");
             Console.WriteLine("Lugares: ");
             foreach(var item in ListaLugares)

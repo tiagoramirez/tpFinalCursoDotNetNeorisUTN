@@ -42,7 +42,7 @@ namespace Controlador
             return clientes;
         }
 
-        public static Cliente ObtenerId(int id)
+        public static Cliente ObtenerClienteId(int id)
         {
             var res=new Particular();
             try
@@ -66,29 +66,19 @@ namespace Controlador
             {
                 using (var context = new TPContext())
                 {
-                    res=context.Clientes.Any(x=>x.Id==id);
+                    res=context.Clientes.Any(x=>x.IdCliente==id);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error!!!! \n {e.Message}");
             }
-            return res;
-        }
-
-        public static bool ExisteClienteDni(int dni)
-        {
-            bool res = false;
-            try
+            if (res == false)
             {
-                using (var context = new TPContext())
-                {
-                    res = context.Clientes.Any(x=>x.Dni==dni);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error!!!! \n {e.Message}");
+                Console.WriteLine($"El cliente con ID {id} no fue encontrado.");
+                Console.Write("Ingrese una tecla para continuar...");
+                Console.ReadKey(true);
+                Console.Clear();
             }
             return res;
         }

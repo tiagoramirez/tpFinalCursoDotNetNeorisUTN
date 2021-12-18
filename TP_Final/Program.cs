@@ -60,6 +60,23 @@ namespace TP_Final
                         }
                     break;
 
+                    case '3'://Menu Factura
+                        var opcFactura = MenusFactura.OpcionesFactura();
+                        switch (opcFactura)
+                        {
+                            case '1':
+                                AccionesFactura.CrearFacturaYSubirBd();
+                                break;
+                            
+                            
+                            
+                            
+                            case (char)27:
+                                Console.Clear();
+                                break;
+                        }
+                    break;
+
                     case (char)27:
                         terminar = true;
                         break;

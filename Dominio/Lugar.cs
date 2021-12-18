@@ -12,17 +12,16 @@ namespace Dominio
         [Key]
         public int IdLugar  { get; set; }
 
-
         //Navigation Properties
         public int IdPaquete { get; set; }
         [ForeignKey("IdPaquete")]
-        public   Paquete Paquete { get; set; }
+        public Paquete Paquete { get; set; }
         //End Navigation Properties
 
         public string Ciudad { get; set; }
         public string Estado { get; set; }
         public string Pais { get; set; }
-        
+
         public Lugar() { }
         public Lugar(string ciudad, string estado, string pais)
         {
