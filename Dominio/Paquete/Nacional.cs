@@ -79,5 +79,6 @@ namespace Dominio
             Console.WriteLine($"Cantidad de cuotas del pago: {CantidadDeCuotas}");
             Console.WriteLine($"Valor por cuota: ${ValorPorCuota}");
         }
+         
     }
 }

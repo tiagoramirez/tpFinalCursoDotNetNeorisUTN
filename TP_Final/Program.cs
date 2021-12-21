@@ -66,11 +66,13 @@ namespace TP_Final
                         {
                             case '1':
                                 AccionesFactura.CrearFacturaYSubirBd();
-                                break;
-                            
-                            
-                            
-                            
+                            break;
+                            case '2':
+                                AccionesFactura.MotrarFacturasDeUnCliente();
+                            break;
+
+
+
                             case (char)27:
                                 Console.Clear();
                                 break;

@@ -12,7 +12,7 @@ namespace Acciones
             var idCliente = IngresarCliente();
             var paquetes = IngresarPaquetes();
             var nuevaFactura = new Factura(idCliente, paquetes);
-            ControladorFactura.AgregarBd(nuevaFactura);
+            ControladorFactura.AgregarBd(nuevaFactura, paquetes);
         }
 
         private static int IngresarCliente()
@@ -55,6 +55,19 @@ namespace Acciones
                 paquete = ControladorPaquete.ObtenerPaqueteId(idPaquete);
             }
             return paquetes;
+        }
+
+        public static List<Factura> MotrarFacturasDeUnCliente()
+        {
+            int dni=0;
+            Console.Write("Ingrese el dni del cliente ");
+            var esInt = int.TryParse(Console.ReadLine(), out dni);
+            while (!esInt || dni == 0)
+            {
+                Console.Write("Ingrese el dni del cliente ");
+                esInt = int.TryParse(Console.ReadLine(), out dni);
+            }
+            return ControladorFactura.RecuperarBd(dni);
         }
     }
 }

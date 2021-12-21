@@ -11,5 +11,6 @@ namespace Datos
         public DbSet<Paquete> Paquetes { get; set; }
         public DbSet<Lugar> Lugares { get; set; }
         public DbSet<Factura> Facturas { get; set; }
+
     }
 }

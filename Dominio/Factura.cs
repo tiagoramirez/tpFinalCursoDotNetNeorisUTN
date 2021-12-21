@@ -19,7 +19,7 @@ namespace Dominio
         [ForeignKey("IdCliente")]
         public Cliente Cliente { get; set; }
         //End Navigation Properties
-
+        public Factura(){}
         public Factura(int idCliente, List<Paquete> paquetes)
         {
             IdCliente = idCliente;

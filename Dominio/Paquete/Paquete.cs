@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
 {
-    public abstract class Paquete
+    public abstract class Paquete 
     {
         [Key]
         public int IdPaquete { get; set; }
@@ -145,5 +145,8 @@ namespace Dominio
             Console.Clear();
             return cantidad;
         }
+
+       
+       
     }
 }
