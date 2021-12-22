@@ -27,10 +27,10 @@ namespace Controlador
                     context.Facturas.Add(factura);
                     context.SaveChanges();              
                     foreach (Paquete p in listpaquetes){    
-                    var fact = context.Facturas.FirstOrDefault(i => i.IdFactura== factura.IdFactura);
-                    var paq = context.Paquetes.FirstOrDefault(j => j.IdPaquete == p.IdPaquete);
-                    fact.ListaPaquetes.Add(paq);
-                    context.SaveChanges();
+                        var fact = context.Facturas.FirstOrDefault(i => i.IdFactura== factura.IdFactura);
+                        var paq = context.Paquetes.FirstOrDefault(j => j.IdPaquete == p.IdPaquete);
+                        fact.ListaPaquetes.Add(paq);
+                        context.SaveChanges();
                     }
                     
                 }
@@ -51,10 +51,9 @@ namespace Controlador
                 using (var context = new TPContext())
                 {
                     var cliente = context.Clientes.FirstOrDefault(i => i.Dni == dni);
-                    facturas = context.Facturas.Where(x => x.IdCliente == cliente.IdCliente).ToList();
-                    
-
+                    facturas = context.Facturas.Include("ListaPaquetes").Where(x => x.IdCliente == cliente.IdCliente).ToList();
                 }
+
             }
             catch (Exception e)
             {
