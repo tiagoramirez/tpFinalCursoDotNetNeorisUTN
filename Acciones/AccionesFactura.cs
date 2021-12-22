@@ -57,7 +57,7 @@ namespace Acciones
             return paquetes;
         }
 
-        public static List<Factura> MotrarFacturasDeUnCliente()
+        private static  List<Factura>  RecuperarFacturasPorDni()
         {
             int dni=0;
             Console.Write("Ingrese el dni del cliente ");
@@ -68,6 +68,36 @@ namespace Acciones
                 esInt = int.TryParse(Console.ReadLine(), out dni);
             }
             return ControladorFactura.RecuperarBd(dni);
+        }
+
+        public static void MostrarFacturas()
+        {
+            List<Factura> facturas = RecuperarFacturasPorDni();
+            if (facturas != null)
+            {
+                foreach (var f in facturas)
+                {
+                    f.MostrarFactura();
+                    Console.WriteLine("\n--------------------------------------\n");
+                }
+            }
+            Console.WriteLine("\n--------------------------------------\n");
+            Console.WriteLine("Total compras del Cliente");
+            Console.WriteLine(CalcularTotalVentas(facturas));
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+
+        }
+
+        private static double CalcularTotalVentas(List<Factura> facturas)
+        {
+            double Total=0;
+            foreach(Factura f in facturas)
+            {
+                Total += f.ImporteTotalPesos;
+            }
+            return Total;
         }
     }
 }

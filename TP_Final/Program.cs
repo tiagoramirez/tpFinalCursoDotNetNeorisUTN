@@ -68,7 +68,7 @@ namespace TP_Final
                                 AccionesFactura.CrearFacturaYSubirBd();
                             break;
                             case '2':
-                                AccionesFactura.MotrarFacturasDeUnCliente();
+                                AccionesFactura.MostrarFacturas();
                             break;
 
 
