@@ -109,7 +109,7 @@ namespace Controlador
             {
                 using (var context = new TPContext())
                 {
-                    res = context.Paquetes.Find(idPaquete);
+                    res = context.Paquetes.Include("ListaLugares").FirstOrDefault(x=>x.IdPaquete==idPaquete);
                 }
             }
             catch (Exception e)

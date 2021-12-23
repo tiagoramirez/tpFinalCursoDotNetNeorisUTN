@@ -28,6 +28,10 @@ namespace TP_Final
                                 AccionesCliente.MostrarTodosLosClientes();
                                 break;
 
+                            case '3':
+                                AccionesCliente.MostrarClienteId();
+                                break;
+
                             case (char)27:
                                 Console.Clear();
                                 break;
@@ -44,6 +48,10 @@ namespace TP_Final
 
                             case '2':
                                 AccionesPaquete.MostrarTodosLosPaquetes();
+                                break;
+
+                            case '3':
+                                AccionesPaquete.MostrarPaqueteId();
                                 break;
 
                             case '4':
@@ -70,8 +78,6 @@ namespace TP_Final
                             case '2':
                                 AccionesFactura.MostrarFacturas();
                             break;
-
-
 
                             case (char)27:
                                 Console.Clear();

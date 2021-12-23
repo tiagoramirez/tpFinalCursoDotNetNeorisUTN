@@ -18,7 +18,9 @@ namespace Dominio
         public List<Factura> ListaFacturas { get; set; }
         //End Navigation Properties
 
-        public Cliente() { }
+        public Cliente() {
+            ListaFacturas = new List<Factura>();
+        }
 
         public virtual void CargarCliente()
         {
@@ -31,7 +33,7 @@ namespace Dominio
 
         private void IngresarDni()
         {
-            Console.Write("Ingresar D.N.I. del viajante: ");
+            Console.Write("Ingresar D.N.I. del cliente: ");
             var dniString = Console.ReadLine();
             var esInt = int.TryParse(dniString, out int dni);
             while (!esInt || dniString.Length != 8)
@@ -198,6 +200,18 @@ namespace Dominio
             Console.WriteLine($"Provincia: {Provincia}");
             Console.WriteLine($"Direccion: {Direccion}");
             Console.WriteLine($"Telefono: {Telefono}");
+            if(ListaFacturas.Count==0 || ListaFacturas == null)
+            {
+                Console.WriteLine($"No tiene facturas");
+            }
+            else
+            {
+                Console.WriteLine("Tiene las facturas: ");
+                foreach (var fact in ListaFacturas)
+                {
+                    Console.WriteLine(" - "+fact.IdFactura);
+                }
+            }
         }
     }
 }

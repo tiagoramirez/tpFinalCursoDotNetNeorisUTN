@@ -6,6 +6,20 @@ namespace Acciones
 {
     public static class AccionesCliente
     {
+        public static int IngresarIdCliente()
+        {
+            Console.Write("Ingrese el id del cliente: ");
+            var esInt = int.TryParse(Console.ReadLine(), out int id);
+            while (!esInt || id < 0)
+            {
+                Console.WriteLine("Valor incorrecto.");
+                Console.Write("Ingrese otra vez el id del cliente: ");
+                esInt = int.TryParse(Console.ReadLine(), out id);
+            }
+            Console.Clear();
+            return id;
+        }
+
         public static void CrearClienteParticularYSubirBd()
         {
             var nuevoCliente = new Particular();
@@ -27,12 +41,14 @@ namespace Acciones
             {
                 foreach (var cliente in clientes)
                 {
+                    var listaFacturas = ControladorCliente.ObtenerFacturasId(cliente.IdCliente);
+                    cliente.ListaFacturas = listaFacturas;
                     cliente.MostrarCliente();
                     Console.WriteLine("\n--------------------------------------\n");
                 }
             }
             Console.WriteLine("Presione alguna tecla para continuar...");
-            Console.ReadKey();
+            Console.ReadKey(true);
             Console.Clear();
         }
 
@@ -49,12 +65,27 @@ namespace Acciones
             Console.Clear();
             if (opc.KeyChar == '1')
             {
-                AccionesCliente.CrearClienteParticularYSubirBd();
+                CrearClienteParticularYSubirBd();
             }
             else
             {
-                AccionesCliente.CrearClienteCorporativoYSubirBd();
+                CrearClienteCorporativoYSubirBd();
             }
+        }
+
+        public static void MostrarClienteId()
+        {
+            var id = IngresarIdCliente();
+            var cliente = ControladorCliente.ObtenerClienteId(id);
+            if (cliente != null)
+            {
+                var facturas = ControladorCliente.ObtenerFacturasId(cliente.IdCliente);
+                cliente.ListaFacturas = facturas;
+                cliente.MostrarCliente();
+            }
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey(true);
+            Console.Clear();
         }
     }
 }

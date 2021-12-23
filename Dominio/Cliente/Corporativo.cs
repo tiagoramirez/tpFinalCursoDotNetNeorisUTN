@@ -23,6 +23,7 @@ namespace Dominio
             this.RazonSocial = Console.ReadLine();
             Console.Clear();
         }
+
         private void IngresarCuit()
         {
             Console.Write("Ingresar C.U.I.T.: ");
@@ -45,6 +46,5 @@ namespace Dominio
             Console.WriteLine($"Razon social: {RazonSocial}");
             Console.WriteLine($"C.U.I.T.: {Cuit}");
         }
-
     }
 }

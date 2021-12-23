@@ -41,14 +41,7 @@ namespace Acciones
             double precioNuevo;
             do
             {
-                Console.Write("Ingresa el ID del paquete el cual va a modificar el precio: ");
-                var esInt = int.TryParse(Console.ReadLine(), out idPaquete);
-                while (!esInt)
-                {
-                    Console.Write("Ingresa un numero entero por favor: ");
-                    esInt = int.TryParse(Console.ReadLine(), out idPaquete);
-                }
-                Console.Clear();
+                idPaquete=IngresarIdPaquete();
 
                 Console.Write($"Ingresa el nuevo precio del paquete {idPaquete}: ");
                 var esDouble = double.TryParse(Console.ReadLine(), out precioNuevo);
@@ -69,19 +62,26 @@ namespace Acciones
             int idPaquete;
             do
             {
-                Console.Write("Ingresa el ID del paquete el cual va a modificar el estado: ");
-                var esInt = int.TryParse(Console.ReadLine(), out idPaquete);
-                while (!esInt)
-                {
-                    Console.Write("Ingresa un numero entero por favor: ");
-                    esInt = int.TryParse(Console.ReadLine(), out idPaquete);
-                }
-                Console.Clear();
+                idPaquete = IngresarIdPaquete();
             }
             while (!ControladorPaquete.ActualizarEstadoPaquete(idPaquete));
 
             Console.Clear();
         }
+
+        private static int IngresarIdPaquete()
+        {
+            Console.Write("Ingresa el ID del paquete: ");
+            var esInt = int.TryParse(Console.ReadLine(), out int idPaquete);
+            while (!esInt || idPaquete<0)
+            {
+                Console.Write("Ingresa un numero entero por favor: ");
+                esInt = int.TryParse(Console.ReadLine(), out idPaquete);
+            }
+            Console.Clear();
+            return idPaquete;
+        }
+
         public static void CrearPaquete()
         {
             Console.WriteLine("1: Paquete Nacional");
@@ -103,5 +103,16 @@ namespace Acciones
                 CrearPaqueteInternacionalYSubirBd();
             }
         }
+
+        public static void MostrarPaqueteId()
+        {
+            var id = IngresarIdPaquete();
+            var paquete = ControladorPaquete.ObtenerPaqueteId(id);
+            if (paquete != null) paquete.MostrarPaquete();
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey(true);
+            Console.Clear();
+        }
+
     }
 }

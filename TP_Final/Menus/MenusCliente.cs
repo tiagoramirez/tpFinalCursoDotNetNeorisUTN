@@ -10,10 +10,9 @@ namespace TP_Final
             Console.WriteLine("1: Crear nuevo cliente");
             Console.WriteLine("2: Mostrar todos los clientes");
             Console.WriteLine("3: Buscar un cliente por ID");
-            Console.WriteLine("4: Buscar cliente por DNI");
             Console.WriteLine("ESC: Volver");
             var opc = Console.ReadKey(true);
-            while (opc.KeyChar < '1' || opc.KeyChar > '4')
+            while (opc.KeyChar < '1' || opc.KeyChar > '3')
             {
                 if (opc.KeyChar == (char)27)
                 {

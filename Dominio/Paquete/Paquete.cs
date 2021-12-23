@@ -145,8 +145,5 @@ namespace Dominio
             Console.Clear();
             return cantidad;
         }
-
-       
-       
     }
 }

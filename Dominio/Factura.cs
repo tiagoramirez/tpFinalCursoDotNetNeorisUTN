@@ -50,11 +50,6 @@ namespace Dominio
             {
                 Console.WriteLine($"ID del paquete: {paquete.IdPaquete}");
                 Console.WriteLine($"Nombre del paquete: {paquete.Nombre}");
-                Console.WriteLine($"Lugares: ");
-                foreach (var lugar in paquete.ListaLugares)
-                {
-                    lugar.MostrarLugar();
-                }
                 if (paquete is Internacional)
                 {
                     Console.WriteLine($"Importe del paquete: U$D{paquete.Precio}");
