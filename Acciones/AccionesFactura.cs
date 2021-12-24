@@ -57,14 +57,20 @@ namespace Acciones
             var id = AccionesCliente.IngresarIdCliente();
 
             List<Factura> facturas = ControladorCliente.ObtenerFacturasId(id);
+            double importeTotalPesos = 0;
+            double importeTotalDolares = 0;
             if (facturas != null)
             {
                 foreach (var f in facturas)
                 {
                     f.MostrarFactura();
+                    importeTotalPesos += f.ImporteTotalPesos;
+                    importeTotalDolares += f.ImporteTotalDolares;
                     Console.WriteLine("\n--------------------------------------\n");
                 }
             }
+            Console.WriteLine($"Importe de todas las ventas en pesos: ${importeTotalPesos}");
+            Console.WriteLine($"Importe de todas las ventas en dolares: U$D{importeTotalDolares}");
             Console.WriteLine("Presione alguna tecla para continuar...");
             Console.ReadKey();
             Console.Clear();

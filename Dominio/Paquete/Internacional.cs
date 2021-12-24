@@ -75,7 +75,7 @@ namespace Dominio
 
         private void CargarImpuestoAPrecio()
         {
-            Console.Write("Ingresa el monto fijo de impuesto: ");
+            Console.Write("Ingresa el monto fijo de impuesto en pesos: ");
             var esDouble2 = Double.TryParse(Console.ReadLine(), out double impuesto);
             while (!esDouble2 || !SetImpuestoFijo(impuesto))
             {

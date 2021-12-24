@@ -53,12 +53,12 @@ namespace Dominio
                 if (paquete is Internacional)
                 {
                     Console.WriteLine($"Importe del paquete: U$D{paquete.Precio}");
-                    ImporteTotalDolares += paquete.Precio;
+                    /*ImporteTotalDolares += paquete.Precio;*/
                 }
                 else
                 {
                     Console.WriteLine($"Importe del paquete: ${paquete.Precio}");
-                    ImporteTotalPesos += paquete.Precio;
+                    /*ImporteTotalPesos += paquete.Precio;*/
                 }
             }
             Console.WriteLine("\n------------------------------------\n");

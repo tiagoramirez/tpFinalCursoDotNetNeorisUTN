@@ -87,5 +87,22 @@ namespace Acciones
             Console.ReadKey(true);
             Console.Clear();
         }
+
+        public static void MostrarClientes2Ventas()
+        {
+            var clientes = ControladorCliente.ObtenerClientes();
+            foreach(var cliente in clientes)
+            {
+                cliente.ListaFacturas = ControladorCliente.ObtenerFacturasId(cliente.IdCliente);
+                if (cliente.ListaFacturas.Count >= 2)
+                {
+                    cliente.MostrarCliente();
+                    Console.WriteLine("\n--------------------------------------\n");
+                }
+            }
+            Console.WriteLine("Presione alguna tecla para continuar...");
+            Console.ReadKey(true);
+            Console.Clear();
+        }
     }
 }

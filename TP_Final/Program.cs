@@ -32,6 +32,10 @@ namespace TP_Final
                                 AccionesCliente.MostrarClienteId();
                                 break;
 
+                            case '4':
+                                AccionesCliente.MostrarClientes2Ventas();
+                                break;
+
                             case (char)27:
                                 Console.Clear();
                                 break;
